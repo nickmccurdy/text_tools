@@ -1,74 +1,41 @@
-/*
-background repeats in opera and ie 8 instead of stretching
-browsers besides firefox give ugly black table border around effects
-*/
-
-a {text-decoration: none;}
-
-.link {color: yellow;}
-.active {color: darkblue;}
-
-body
-{
-  background: lightgray url("backgrounds/page.png") center;
-  -o-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  font-family: Arial;
-  font-size: 12px;
+/*major ui*/
+body {
+  height: 100%;
 }
-.round
-{
-  background: gray url("backgrounds/effects.png") repeat-x center;
-  -o-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: darkblue;
+#mainui {
+  height: 100%;
 }
-.effects
-{
-  background-color: transparent;
-  -o-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  font-size: 14px;
-  font-weight: bold;
-  border-style: solid;
-  border-width: 2px;
-  border-color: gray;
-  border-top: none;
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
+#mainui > div {
+  height:100% !important;
 }
-.titlebar
-{
-  background: black url("backgrounds/title.png") repeat-x center;
-  -o-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  color: white;
+
+/*title bar*/
+.titlebar {
   font-size: 18px;
-}
-textarea, input[type=text]
-{
-  font-family: Arial;
-  font-size: 12px;
-}
-.noresize
-{
-  resize: none;
-  font-size: 14px;
-}
-.info
-{
-  color: darkblue;
-}
-.question
-{
+  padding: 10px;
   font-weight: bold;
+  text-align: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/*text input*/
+.main-field {
+  margin: 0;
+  padding: 0;
+  resize: none;
+  height: 100%;
+  width: 100%;
+  height: 500px;
+}
+
+/*effects*/
+.nav-header, .nav-list a {
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

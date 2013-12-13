@@ -1,0 +1,39 @@
+/*major ui*/
+body {
+  background-color: #696969;
+}
+
+/*title bar*/
+.titlebar {
+  background-color: #000;
+  color: #fff;
+}
+
+/*toolbar*/
+.toolbar {
+  background-color: #404040;
+  color: #fff;
+}
+
+/*text input*/
+.main-field {
+  background-color: #dcdcdc;
+}
+
+/*effects*/
+.nav-list a {
+  color: #dcdcdc;
+}
+.nav-list .active {
+  background-color: #222;
+}
+.nav-header {
+  background-color: #404040;
+  color: #fff;
+}
+.nav-header:hover {
+  background-color: #888;
+}
+.nav-header:active {
+  background-color: #000;
+}

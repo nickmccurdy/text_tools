@@ -1,110 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Text Tools 1.6</title>
-<link rel="shortcut icon" href="icons/logo.ico">
-<link rel="apple-touch-icon" href="icons/logo.png">
-<script type="text/javascript" src="scripts.js"></script>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<!--<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles_mobile.css">-->
-<meta name="viewport" content="width=device-width; initial-scale=0.9; maximum-scale=0.9; user-scalable=0;">
+  <meta charset="utf-8">
+  <!-- more info -->
+  <title>Text Tools 2.0 dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=2, user-scalable=1">
+  <!-- css -->
+  <link rel="stylesheet" href="../../components/bootstrap.css/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../components/bootstrap.css/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
+  <!-- icons -->
+  <link rel="shortcut icon" href="icons/logo.ico">
+  <link rel="apple-touch-icon" href="icons/logo.png">
 </head>
 
-<body onLoad="setInterval('watchInput()',10); updateFocus(document.text_tools.text_before); regainFocus(); clicked(first); setInput();" link="yellow" vlink="yellow" alink="darkblue">
-<div align="center" valign="middle"><form name="text_tools">
+<body>
 
-<table class="round" width="99%" height="99%" cellspacing="0">
-<tr class="titlebar">
-  <th title="Enter text to be edited here.">Input</th>
-  <th title="Change the effect, which changes how your input will be edited.">Effects</th>
-  <th title="The outcome of your input in the current effect will be displayed here.">Output</th>
-</tr>
-<tr height="100%">
-  <td valign="top" width="50%">
-    <textarea name="text_before" class="noresize" style="height:100%;width:100%;" onFocus="updateFocus(document.text_tools.text_before)" onload="document.text_tools.text_before.focus()"></textarea>
-  </td>
-  <td valign="top">
-  
-  <table border="1" cellspacing="0" class="effects" style="width:100%;">
-  <tr><td align="center">
-    <a href="javascript:changeEffect('normal')" title="Outputs the original, unedited text." onFocus="regainFocus()" onClick="clicked(this)" id="first">
-      <img alt="" src="icons/text.png" border="0">&nbsp;Normal</a><br>
-    <a href="javascript:outputToInput()" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text." onFocus="regainFocus()">
-      <img alt="" src="icons/switch.png" border="0">&nbsp;Save&nbsp;Effect</a><br>
-    <a href="javascript:clear()" title="Clears all the input text and sets all effects to their defaults." onFocus="document.text_tools.text_before.focus()">
-      <img alt="" src="icons/clear.png" border="0">&nbsp;Clear</a>
-  </tr></td><tr><td align="center">     
-    <a href="javascript:changeEffect('lowercase')" title="Lowers the case of all the text." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_lowercase.png" border="0">&nbsp;Lowercase</a><br>
-    <a href="javascript:changeEffect('uppercase')" title="Raises the case of all the text." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_uppercase.png" border="0">&nbsp;Uppercase</a><br>
-<!--  <a href="javascript:changeEffect('sentencecase')" title="Raises the case of the first letter of every sentence." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_uppercase.png" border="0">&nbsp;Sentence&nbsp;Case</a><br> -->
-    <a href="javascript:changeEffect('titlecase')" title="Title cases text, which capitalizes the first letter of most words." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_uppercase.png" border="0">&nbsp;Title&nbsp;Case</a><br>
-<!--  <a href="javascript:changeEffect('reversecase')" title="Swaps all letters from uppercase to lowercase and vice versa." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_uppercase.png" border="0">&nbsp;Reverse&nbsp;Case</a><br> -->
-    <a href="javascript:changeEffect('htmllower')" title="Lowers the case of HTML tags." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/html.png" border="0">&nbsp;HTML&nbsp;Lower</a><br>
-    <a href="javascript:changeEffect('htmlupper')" title="Raises the case of HTML tags." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/html.png" border="0">&nbsp;HTML&nbsp;Upper</a><br>
-  </tr></td><tr><td align="center">
-    <a href="javascript:changeEffect('find')" title="Type text in the find box to highlight it with capital letters." onFocus="regainFocus()" onClick="clicked(this); document.text_tools.find_text.focus();" id="find_button">
-      <img alt="" src="icons/magnifier.png" border="0">&nbsp;Find</a><div id="find_counter" style="color:black; font-weight:normal; display:inline;"></div><br>
-      <textarea name="find_text" rows="1" style="width:100%" onFocus="if(effect!='replace') {changeEffect('find'); clicked(find_button);}"></textarea><br>
-    <a href="javascript:changeEffect('replace')" title="Type text in the find box to replace it with the text you type in the replace box." onFocus="regainFocus()" onClick="clicked(this); document.text_tools.replace_text.focus();" id="replace_button">
-      <img alt="" src="icons/text_replace.png" border="0">&nbsp;Replace</a><br>
-      <textarea name="replace_text" rows="1" style="width:100%" onFocus="changeEffect('replace'); clicked(replace_button);"></textarea><br>
-  </tr></td><tr><td align="center">
-    <a href="javascript:changeEffect('list'); clicked(list);" title="Turns the input into a list." onFocus="selectAll(document.text_tools.list_start)" id="list">
-      <img alt="" src="icons/text_list_bullets.png" border="0">&nbsp;List</a>&nbsp;<input type="checkbox" name="number_list" onFocus="changeEffect('list'); clicked(list);" onClick=" convert(); selectAll(document.text_tools.list_start);"><div style="font-weight:normal;display:inline;" onClick="toggleCheck(document.text_tools.number_list); changeEffect('list'); clicked(list); selectAll(document.text_tools.list_start);" title="Toggles numbered lists.">#</div><br>
-      <input type="text" name="list_start" style="width:100%" value="- " onFocus="changeEffect('list'); clicked(list); selectAll(document.text_tools.list_start);"><br>
-    <a href="javascript:changeEffect('remove_list')" title="Removes characters at the beginning of items in a list." onFocus="selectAll(document.text_tools.cutoff)" onClick="clicked(this)" id="remove_list">
-      <img alt="" src="icons/text_list_bullets.png" border="0">&nbsp;List&nbsp;Remover</a><br>
-      <input type="text" name="cutoff" style="width:43%" value="3" onFocus="changeEffect('remove_list'); clicked(remove_list); selectAll(document.text_tools.cutoff);" onBlur="if(document.text_toos.cutoff.value=='') {document.text_tools.cutoff.value=3}" onKeyPress="return checkIt(event)"> <font style="color:black"><input type="button" onClick="valueUp(document.text_tools.cutoff); changeEffect('remove_list'); clicked(remove_list); selectAll(document.text_tools.cutoff);" value="+"><input type="button" onClick="valueDown(document.text_tools.cutoff); changeEffect('remove_list'); clicked(remove_list); selectAll(document.text_tools.cutoff);" value="-">
-  </tr></td><tr><td align="center">
-    <a href="javascript:changeEffect('repeat'); clicked(repeat);" title="Enter a number to repeat all the text that many times." onFocus="selectAll(document.text_tools.repetitions)" id="repeat">
-      <img alt="" src="icons/repeater.png" border="0">&nbsp;Repeat</a><br>
-      <input type="text" name="repetitions" style="width:43%" value="1" onFocus="changeEffect('repeat'); clicked(repeat); selectAll(document.text_tools.repetitions);" onBlur="if(document.text_tools.repetitions.value=='') {document.text_tools.repetitions.value=1}" onKeyPress="return checkIt(event)"> <font style="color:black"><input type="button" onClick="valueUp(document.text_tools.repetitions); changeEffect('repeat'); clicked(repeat); selectAll(document.text_tools.repetitions);" value="+"><input type="button" onClick="valueDown(document.text_tools.repetitions); changeEffect('repeat'); clicked(repeat); selectAll(document.text_tools.repetitions);" value="-"><br>
-    <a href="javascript:changeEffect('wordcount')" title="Counts the number of characters, words, and lines in the text." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/word_count.png" border="0">&nbsp;Word&nbsp;Count</a><br>
-  </tr></td><tr><td align="center">
-    <a href="javascript:changeEffect('sortaz')" title="Sorts a list in alphabetical order." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_order_av.png" border="0">&nbsp;Sort&nbsp;A-Z</a><br>
-    <a href="javascript:changeEffect('sortza')" title="Sorts a list in reverse alphabetical order." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_order_va.png" border="0">&nbsp;Sort&nbsp;Z-A</a><br>
-    <a href="javascript:changeEffect('sortreverse')" title="Sorts a list in reverse order." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_order_reverse.png" border="0">&nbsp;Sort&nbsp;Reverse</a><br>
-    <a href="javascript:changeEffect('sortrandom')" title="Sorts a list in a random order. Click again to reorder the list." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/text_order_reverse.png" border="0">&nbsp;Sort&nbsp;Random</a>
-  </tr></td><tr><td align="center">
-    <a href="javascript:changeEffect('rot13')" title="Uses ROT13 encryption on the text by shifting every letter 13 letters forward in the alphabet." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/rot13.png" border="0">&nbsp;ROT13</a><br>
-    <a href="javascript:changeEffect('backwards')" title="Displays all the input backwards." onFocus="regainFocus()" onClick="clicked(this)">
-      <img alt="" src="icons/arrow_left.png" border="0">&nbsp;Backwards</a><br>
-    <!--
-      <img alt="" src="icons/user_red.png" border="0"> Pig Latin-->
-  </td></tr><!--<tr><td align="center">
-      <img alt="" src="icons/html.png" border="0"> HTML Entities<br>
-      <img alt="" src="icons/script.png" border="0"> JS Entities
-  </td></tr>-->
-  </table><br>
-  
-  <table border="0" class="effects" align="center">
-  <tr><td align="center">
-    <a href="about.html" title="Read some information about Text Tools and grab a handy bookmarklet." target="_blank" class="info">
-      <img alt="" src="icons/information.png" border="0">&nbsp;About</a><br>
-    <a href="help.html" title="Read some helpful FAQs to get acquainted with Text Tools." target="_blank" class="info">
-      <img alt="" src="icons/help.png" border="0">&nbsp;Help</a><br>
-    <a href="http://scr.im/lki" target="_blank" title="Email me any questions, comments, suggestions, or bug reports about this tool, with &quot;Text Tools&quot; in the subject of the email." class="info">
-      <img alt="" src="icons/email.png" border="0">&nbsp;Feedback</a><br>
-  </td></tr>
-  </table></div>
+<!--title bar-->
+<div class="row-fluid titlebar" id="titlebar">
+  <div class="span5">Input</div>
+  <div class="span2">Effects</div>
+  <div class="span5">Output</div>
+</div>
 
-  </td>
-  <td valign="top" width="50%">
-    <textarea name="text_after" class="noresize" style="height:100%;width:100%;" onFocus="updateFocus(document.text_tools.text_after)" onClick="selectAll(text_after)" readonly="readonly"></textarea>
-  </td>
-</tr>
-</table>
+<!--tool bar-->
+<div class="row-fluid toolbar" id="toolbar">
+  <div class="span12">
+    Limiter:&nbsp;<button class="btn btn-mini">All</button>
+    Sections:&nbsp;<span class="btn-group">
+      <button class="btn btn-mini" id="toolbar_collapse_button">Collapse</button>
+      <button class="btn btn-mini" id="toolbar_expand_button">Expand</button>
+    </span>
+    Top&nbsp;Bar:&nbsp;<button class="btn btn-mini" id="toolbar_titlebar_toggle">Toggle</button>
+    Spell&nbsp;Check:&nbsp;<button class="btn btn-mini">Toggle</button>
+    Autocomplete:&nbsp;<button class="btn btn-mini">Toggle</button>
 
-</form></div>
+    <button class="btn btn-mini pull-right" id="toolbar_close">X</button>
+  </div>
+</div>
+
+<!--main ui space-->
+<div class="row-fluid" id="mainui">
+
+  <!--text before-->
+  <div class="span5" id="text_before_container">
+    <textarea class="main-field" id="text_before"></textarea>
+  </div>
+
+  <!--effects panels-->
+  <ul class="span2 nav nav-list" id="effects">
+
+    <ul class="nav nav-list">
+
+      <li><a class="effect" data-effect="normal">
+        <i class="icon-home icon-white"></i> Normal
+      </a></li>
+
+      <li><a id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
+        <i class="icon-arrow-left icon-white"></i> Save Effect
+      </a></li>
+
+      <li><a id="clear" title="Clears all the input text and sets all effects to their defaults.">
+        <i class="icon-remove icon-white"></i> Clear
+      </a></li>
+
+      <li><a id="toolbar_button" title="Toggles the advanced toolbar.">
+        <i class="icon-cog icon-white"></i> Toolbar
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="case_panel">
+      <i class="icon-chevron-up icon-white pull-left"></i>
+      Case
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="case_panel">
+
+      <li><a class="effect" data-effect="lowercase">
+        <i class="icon-chevron-down icon-white"></i> Lowercase
+      </a></li>
+
+      <li><a class="effect" data-effect="uppercase">
+        <i class="icon-chevron-up icon-white"></i> Uppercase
+      </a></li>
+
+      <li><a class="effect" data-effect="titlecase">
+        <i class="icon-pencil icon-white"></i> Title Case
+      </a></li>
+
+      <li><a class="effect" data-effect="htmllower">
+        <i class="icon-chevron-down icon-white"></i> HTML Lower
+      </a></li>
+
+      <li><a class="effect" data-effect="htmlupper">
+        <i class="icon-chevron-up icon-white"></i> HTML Upper
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="find_panel">
+      <i class="icon-search icon-white pull-left"></i>
+      Find/Replace
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="find_panel">
+
+      <li><a class="effect" data-effect="find">
+        <i class="icon-search icon-white"></i> Find
+        <span id="find_counter" style="color:black; font-weight:normal;"></span><br>
+
+        <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
+        <span id="regexp_toggle_label" style="font-weight:normal;color:#DCDCDC;" title="Toggles regular expression search.">RegExp</span>
+
+        <textarea id="find_text" rows="2" style="width:100%"></textarea>
+      </a></li>
+
+      <li><a class="effect" data-effect="replace">
+        <i class="icon-edit icon-white"></i> Replace
+
+        <textarea id="replace_text" rows="2" style="width:100%"></textarea>
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="sort_panel">
+      <i class="icon-chevron-right icon-white pull-left"></i>
+      Sort
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="sort_panel">
+
+      <li><a class="effect" data-effect="sortaz">
+        <i class="icon-chevron-left icon-white"></i> Sort A-Z
+      </a></li>
+
+      <li><a class="effect" data-effect="sortza">
+        <i class="icon-chevron-right icon-white"></i> Sort Z-A
+      </a></li>
+
+      <li><a class="effect" data-effect="sortreverse">
+        <i class="icon-random icon-white"></i> Sort Reverse
+      </a></li>
+
+      <li><a class="effect" data-effect="sortrandom">
+        <i class="icon-backward icon-white"></i> Sort Random
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="list_panel">
+      <i class="icon-list icon-white pull-left"></i>
+      Lists
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="list_panel">
+
+      <li><a class="effect" data-effect="list">
+        <i class="icon-list icon-white"></i> List
+
+        <input type="checkbox" id="number_list">
+        <span id="number_list_label" style="font-weight:normal;display:inline;color:black;" title="Toggles numbered lists.">#</span>
+
+        <input type="text" id="list_start" style="width:100%" value="- "><br>
+      </a></li>
+
+      <li><a class="effect" data-effect="remove_list">
+        <i class="icon-minus-sign icon-white"></i> List Remover
+
+        <div class="input-append">
+          <input type="text" id="cutoff" style="width:43%" value="3">
+          <input type="button" class="btn" id="cutoff_up" value="+">
+          <input type="button" class="btn" id="cutoff_down" value="-">
+        </div>
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="other_panel">
+      <i class="icon-gift icon-white pull-left"></i>
+      Other
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="other_panel">
+
+      <li><a class="effect" data-effect="repeat">
+        <i class="icon-repeat icon-white"></i> Repeat
+
+        <div class="input-append">
+          <input type="text" id="repetitions" style="width:43%" value="1">
+          <input type="button" class="btn" value="+">
+          <input type="button" class="btn" value="-"><br>
+        </div>
+      </a></li>
+
+      <li><a class="effect" data-effect="wordcount">
+        <i class="icon-check icon-white"></i> Word Count
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="misc_panel">
+      <i class="icon-random icon-white pull-left"></i>
+      Misc
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="misc_panel">
+
+      <li><a class="effect" data-effect="rot13">
+        <i class="icon-forward icon-white"></i> ROT13
+      </a></li>
+
+      <li><a class="effect" data-effect="backwards">
+        <i class="icon-backward icon-white"></i> Backwards
+      </a></li>
+
+    </ul>
+
+    <li class="nav-header" data-toggle="help_panel">
+      <i class="icon-question-sign icon-white pull-left"></i>
+      Help
+      <i class="icon-plus-sign icon-white pull-right"></i>
+    </li>
+    <ul class="nav nav-list" id="help_panel">
+
+      <li><a id="about" href="#about_modal" data-toggle="modal">
+        <i class="icon-info-sign icon-white"></i> About
+      </a></li>
+
+      <li><a id="help" href="help.html" target="_blank">
+        <i class="icon-question-sign icon-white"></i> Help
+      </a></li>
+
+      <li><a id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
+        <i class="icon-envelope icon-white"></i> Feedback
+      </a></li>
+
+    </ul>
+
+  </ul>
+
+  <!--text after-->
+  <div class="span5" id="text_after_container">
+    <textarea class="main-field" id="text_after" readonly></textarea>
+  </div>
+
+</div>
+
+<div class="modal fade hide" id="about_modal">
+  <div class="modal-header">
+    <h3>Text Tools <a class="close" data-dismiss="modal">&#195;&#8212;</a></h3>
+  </div>
+  <div class="modal-body">
+    <p>
+      Version 2.0 dev<br>
+      The free text manipulation tool.<br>
+      <a href="changelog.txt" target="_blank">Changelog</a>
+    </p>
+
+    <p>
+      Programmed and Designed by <a href="http://thenickperson.com" target="_blank">Nicolas McCurdy</a><br>
+      (extra script credits in source code)
+    </p>
+  </div>
+</div>
+
+<!-- scripts -->
+<script src="../../components/jquery/jquery.min.js"></script>
+<script src="../../components/bootstrap.css/js/bootstrap.min.js"></script>
+<script src="js/cookies.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/effects.js"></script>
 </body>
+</html>
