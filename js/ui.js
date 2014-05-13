@@ -39,7 +39,7 @@ $.fn.extend({
 });
 
 //USER INTERFACE
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
   //initialization
   View.updateFocus(Elements.$text_before);
   Elements.$normal_effect.click();
