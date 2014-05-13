@@ -17,7 +17,7 @@ var Panels = {
     this.hidden_elements.length = 0;
     var counter = 0,
       i;
-    $.each(Panels.all_elements, function (i, el) {
+    Panels.all_elements.forEach(function (el) {
       if ($("#" + el).is(":hidden")) {
         Panels.hidden_elements.push(el);
         counter += 1;
@@ -33,7 +33,7 @@ var Panels = {
     if (hidden_elements_cookie) {
       this.hidden_elements = hidden_elements_cookie.split(",");
     }
-    $.each(this.hidden_elements, function (i, value) {
+    this.hidden_elements.forEach(function (value) {
       $("#" + value).hide();
     });
     return this;

@@ -22,10 +22,9 @@ var Cookies = {
 
   get: function (name) {
     var nameEQ = name + "=",
-      ca = document.cookie.split(';'),
-      i;
+      ca = document.cookie.split(';');
 
-    $.each(ca, function (index, c) {
+    ca.forEach(function (c) {
       while (c.charAt(0) === ' ') {
         c = c.substring(1, c.length);
       }

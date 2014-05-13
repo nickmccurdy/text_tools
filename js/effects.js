@@ -124,7 +124,7 @@ var Effects = {
         last_input = "";
         content_array = input.split("\n");
         num = 0;
-        $.each(content_array, function (index, value) { //act sequentially on all array items
+        content_array.forEach(function () { //act sequentially on all array items
           num += 1;
           last_input += num + Elements.list_start.val() + content_array.shift() + "\n";
         });
@@ -140,7 +140,7 @@ var Effects = {
   remove_list: {
     execute: function (input) {
       var text_array = input.split("\n");
-      $.each(text_array, function (i, value) {
+      text_array.forEach(function (value, i) {
         text_array[i] = value.substring(Watcher.watched.cutoff);
       });
       return text_array.join("\n");
