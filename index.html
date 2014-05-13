@@ -108,18 +108,18 @@
 
       <li><a class="effect" data-effect="find">
         <i class="glyphicon glyphicon-search"></i> Find
-        <span id="find_counter" style="color:black; font-weight:normal;"></span><br>
+        <span id="find_counter"></span><br>
 
         <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
-        <span id="regexp_toggle_label" style="font-weight:normal;color:#DCDCDC;" title="Toggles regular expression search.">RegExp</span>
+        <span id="regexp_toggle_label" title="Toggles regular expression search.">RegExp</span>
 
-        <textarea id="find_text" rows="2" style="width:100%"></textarea>
+        <textarea id="find_text" rows="2"></textarea>
       </a></li>
 
       <li><a class="effect" data-effect="replace">
         <i class="glyphicon glyphicon-edit"></i> Replace
 
-        <textarea id="replace_text" rows="2" style="width:100%"></textarea>
+        <textarea id="replace_text" rows="2"></textarea>
       </a></li>
 
     </ul>
@@ -160,15 +160,15 @@
         <i class="glyphicon glyphicon-list"></i> List
 
         <input type="checkbox" id="number_list">
-        <span id="number_list_label" style="font-weight:normal;display:inline;color:black;" title="Toggles numbered lists.">#</span>
+        <span id="number_list_label" title="Toggles numbered lists.">#</span>
 
-        <input type="text" id="list_start" style="width:100%" value="- "><br>
+        <input type="text" id="list_start" value="- "><br>
       </a></li>
 
       <li><a class="effect" data-effect="remove_list">
         <i class="glyphicon glyphicon-minus-sign"></i> List Remover
 
-        <input type="text" id="cutoff" style="width:43%" value="3">
+        <input type="text" id="cutoff" value="3">
         <input type="button" class="btn btn-default" id="cutoff_up" value="+">
         <input type="button" class="btn btn-default" id="cutoff_down" value="-">
       </a></li>
@@ -185,7 +185,7 @@
       <li><a class="effect" data-effect="repeat">
         <i class="glyphicon glyphicon-repeat"></i> Repeat
 
-        <input type="text" id="repetitions" style="width:43%" value="1">
+        <input type="text" id="repetitions" value="1">
         <input type="button" class="btn btn-default" value="+">
         <input type="button" class="btn btn-default" value="-"><br>
       </a></li>
