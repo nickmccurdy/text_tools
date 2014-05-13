@@ -69,168 +69,182 @@
 
     </div>
 
-    <div class="nav-header" data-toggle="case_panel">
-      <i class="glyphicon glyphicon-chevron-up pull-left"></i>
-      Case
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="case_panel">
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="case_panel">
+        <i class="glyphicon glyphicon-chevron-up pull-left"></i>
+        Case
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="case_panel">
 
-      <a class="list-group-item effect" data-effect="lowercase">
-        <i class="glyphicon glyphicon-chevron-down"></i> Lowercase
-      </a>
+        <a class="list-group-item effect" data-effect="lowercase">
+          <i class="glyphicon glyphicon-chevron-down"></i> Lowercase
+        </a>
 
-      <a class="list-group-item effect" data-effect="uppercase">
-        <i class="glyphicon glyphicon-chevron-up"></i> Uppercase
-      </a>
+        <a class="list-group-item effect" data-effect="uppercase">
+          <i class="glyphicon glyphicon-chevron-up"></i> Uppercase
+        </a>
 
-      <a class="list-group-item effect" data-effect="titlecase">
-        <i class="glyphicon glyphicon-pencil"></i> Title Case
-      </a>
+        <a class="list-group-item effect" data-effect="titlecase">
+          <i class="glyphicon glyphicon-pencil"></i> Title Case
+        </a>
 
-      <a class="list-group-item effect" data-effect="htmllower">
-        <i class="glyphicon glyphicon-chevron-down"></i> HTML Lower
-      </a>
+        <a class="list-group-item effect" data-effect="htmllower">
+          <i class="glyphicon glyphicon-chevron-down"></i> HTML Lower
+        </a>
 
-      <a class="list-group-item effect" data-effect="htmlupper">
-        <i class="glyphicon glyphicon-chevron-up"></i> HTML Upper
-      </a>
+        <a class="list-group-item effect" data-effect="htmlupper">
+          <i class="glyphicon glyphicon-chevron-up"></i> HTML Upper
+        </a>
 
-    </div>
-
-    <div class="nav-header" data-toggle="find_panel">
-      <i class="glyphicon glyphicon-search pull-left"></i>
-      Find/Replace
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="find_panel">
-
-      <a class="list-group-item effect" data-effect="find">
-        <i class="glyphicon glyphicon-search"></i> Find
-        <span id="find_counter"></span><br>
-
-        <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
-        <span id="regexp_toggle_label" title="Toggles regular expression search.">RegExp</span>
-
-        <textarea id="find_text" rows="2"></textarea>
-      </a>
-
-      <a class="list-group-item effect" data-effect="replace">
-        <i class="glyphicon glyphicon-edit"></i> Replace
-
-        <textarea id="replace_text" rows="2"></textarea>
-      </a>
-
+      </div>
     </div>
 
-    <div class="nav-header" data-toggle="sort_panel">
-      <i class="glyphicon glyphicon-chevron-right pull-left"></i>
-      Sort
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="sort_panel">
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="find_panel">
+        <i class="glyphicon glyphicon-search pull-left"></i>
+        Find/Replace
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="find_panel">
 
-      <a class="list-group-item effect" data-effect="sortaz">
-        <i class="glyphicon glyphicon-chevron-left"></i> Sort A-Z
-      </a>
+        <a class="list-group-item effect" data-effect="find">
+          <i class="glyphicon glyphicon-search"></i> Find
+          <span id="find_counter"></span><br>
 
-      <a class="list-group-item effect" data-effect="sortza">
-        <i class="glyphicon glyphicon-chevron-right"></i> Sort Z-A
-      </a>
+          <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
+          <span id="regexp_toggle_label" title="Toggles regular expression search.">RegExp</span>
 
-      <a class="list-group-item effect" data-effect="sortreverse">
-        <i class="glyphicon glyphicon-random"></i> Sort Reverse
-      </a>
+          <textarea id="find_text" rows="2"></textarea>
+        </a>
 
-      <a class="list-group-item effect" data-effect="sortrandom">
-        <i class="glyphicon glyphicon-backward"></i> Sort Random
-      </a>
+        <a class="list-group-item effect" data-effect="replace">
+          <i class="glyphicon glyphicon-edit"></i> Replace
 
-    </div>
+          <textarea id="replace_text" rows="2"></textarea>
+        </a>
 
-    <div class="nav-header" data-toggle="list_panel">
-      <i class="glyphicon glyphicon-list pull-left"></i>
-      Lists
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="list_panel">
-
-      <a class="list-group-item effect" data-effect="list">
-        <i class="glyphicon glyphicon-list"></i> List
-
-        <input type="checkbox" id="number_list">
-        <span id="number_list_label" title="Toggles numbered lists.">#</span>
-
-        <input type="text" id="list_start" value="- "><br>
-      </a>
-
-      <a class="list-group-item effect" data-effect="remove_list">
-        <i class="glyphicon glyphicon-minus-sign"></i> List Remover
-
-        <input type="text" id="cutoff" value="3">
-        <input type="button" class="btn btn-default" id="cutoff_up" value="+">
-        <input type="button" class="btn btn-default" id="cutoff_down" value="-">
-      </a>
-
+      </div>
     </div>
 
-    <div class="nav-header" data-toggle="other_panel">
-      <i class="glyphicon glyphicon-gift pull-left"></i>
-      Other
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="other_panel">
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="sort_panel">
+        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+        Sort
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="sort_panel">
 
-      <a class="list-group-item effect" data-effect="repeat">
-        <i class="glyphicon glyphicon-repeat"></i> Repeat
+        <a class="list-group-item effect" data-effect="sortaz">
+          <i class="glyphicon glyphicon-chevron-left"></i> Sort A-Z
+        </a>
 
-        <input type="text" id="repetitions" value="1">
-        <input type="button" class="btn btn-default" value="+">
-        <input type="button" class="btn btn-default" value="-"><br>
-      </a>
+        <a class="list-group-item effect" data-effect="sortza">
+          <i class="glyphicon glyphicon-chevron-right"></i> Sort Z-A
+        </a>
 
-      <a class="list-group-item effect" data-effect="wordcount">
-        <i class="glyphicon glyphicon-check"></i> Word Count
-      </a>
+        <a class="list-group-item effect" data-effect="sortreverse">
+          <i class="glyphicon glyphicon-random"></i> Sort Reverse
+        </a>
 
-    </div>
+        <a class="list-group-item effect" data-effect="sortrandom">
+          <i class="glyphicon glyphicon-backward"></i> Sort Random
+        </a>
 
-    <div class="nav-header" data-toggle="misc_panel">
-      <i class="glyphicon glyphicon-random pull-left"></i>
-      Misc
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
-    </div>
-    <div class="list-group" id="misc_panel">
-
-      <a class="list-group-item effect" data-effect="rot13">
-        <i class="glyphicon glyphicon-forward"></i> ROT13
-      </a>
-
-      <a class="list-group-item effect" data-effect="backwards">
-        <i class="glyphicon glyphicon-backward"></i> Backwards
-      </a>
-
+      </div>
     </div>
 
-    <div class="nav-header" data-toggle="help_panel">
-      <i class="glyphicon glyphicon-question-sign pull-left"></i>
-      Help
-      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="list_panel">
+        <i class="glyphicon glyphicon-list pull-left"></i>
+        Lists
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="list_panel">
+
+        <a class="list-group-item effect" data-effect="list">
+          <i class="glyphicon glyphicon-list"></i> List
+
+          <input type="checkbox" id="number_list">
+          <span id="number_list_label" title="Toggles numbered lists.">#</span>
+
+          <input type="text" id="list_start" value="- "><br>
+        </a>
+
+        <a class="list-group-item effect" data-effect="remove_list">
+          <i class="glyphicon glyphicon-minus-sign"></i> List Remover
+
+          <input type="text" id="cutoff" value="3">
+          <input type="button" class="btn btn-default" id="cutoff_up" value="+">
+          <input type="button" class="btn btn-default" id="cutoff_down" value="-">
+        </a>
+
+      </div>
     </div>
-    <div class="list-group" id="help_panel">
 
-      <a class="list-group-item" id="about" href="#about_modal" data-toggle="modal">
-        <i class="glyphicon glyphicon-info-sign"></i> About
-      </a>
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="other_panel">
+        <i class="glyphicon glyphicon-gift pull-left"></i>
+        Other
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="other_panel">
 
-      <a class="list-group-item" id="help" href="help.html" target="_blank">
-        <i class="glyphicon glyphicon-question-sign"></i> Help
-      </a>
+        <a class="list-group-item effect" data-effect="repeat">
+          <i class="glyphicon glyphicon-repeat"></i> Repeat
 
-      <a class="list-group-item" id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
-        <i class="glyphicon glyphicon-envelope"></i> Feedback
-      </a>
+          <input type="text" id="repetitions" value="1">
+          <input type="button" class="btn btn-default" value="+">
+          <input type="button" class="btn btn-default" value="-"><br>
+        </a>
 
+        <a class="list-group-item effect" data-effect="wordcount">
+          <i class="glyphicon glyphicon-check"></i> Word Count
+        </a>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="misc_panel">
+        <i class="glyphicon glyphicon-random pull-left"></i>
+        Misc
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="misc_panel">
+
+        <a class="list-group-item effect" data-effect="rot13">
+          <i class="glyphicon glyphicon-forward"></i> ROT13
+        </a>
+
+        <a class="list-group-item effect" data-effect="backwards">
+          <i class="glyphicon glyphicon-backward"></i> Backwards
+        </a>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" data-toggle="help_panel">
+        <i class="glyphicon glyphicon-question-sign pull-left"></i>
+        Help
+        <i class="glyphicon glyphicon-plus-sign pull-right"></i>
+      </div>
+      <div class="list-group" id="help_panel">
+
+        <a class="list-group-item" id="about" href="#about_modal" data-toggle="modal">
+          <i class="glyphicon glyphicon-info-sign"></i> About
+        </a>
+
+        <a class="list-group-item" id="help" href="help.html" target="_blank">
+          <i class="glyphicon glyphicon-question-sign"></i> Help
+        </a>
+
+        <a class="list-group-item" id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
+          <i class="glyphicon glyphicon-envelope"></i> Feedback
+        </a>
+
+      </div>
     </div>
 
   </div>

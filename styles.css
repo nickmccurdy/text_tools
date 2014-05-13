@@ -30,7 +30,7 @@ body {
 }
 
 /*effects*/
-.nav-header, .list-group a {
+.panel-heading, .list-group a {
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;

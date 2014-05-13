@@ -25,7 +25,7 @@ var Elements = {
   number_list: $("#number_list"),
   number_list_label: $("#number_list_label"),
   outputToInput: $("#outputToInput"),
-  nav_header: $(".nav-header"),
+  panel_heading: $(".panel-heading"),
   regexp_toggle: $("#regexp_toggle"),
   regexp_toggle_label: $("#regexp_toggle_label"),
   remove_list_effect: $(".effect[data-effect='remove_list']"),
@@ -77,7 +77,7 @@ $(function () {
   });
 
   //panel toggling
-  Elements.nav_header.click(function () {
+  Elements.panel_heading.click(function () {
     var to_toggle = $(this).attr("data-toggle"),
       right_object = $(this).find(".pull-right");
 
