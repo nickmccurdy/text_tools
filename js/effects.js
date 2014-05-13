@@ -199,9 +199,10 @@ var Effects = {
   },
 
   rot13: {
+    // Borrowed from http://phpjs.org/functions/str_rot13/
     execute: function (input) {
-      return input.replace(/[a-zA-Z]/g, function (c) {
-        return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+      return input.replace(/[a-z]/gi, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < "n" ? 13 : -13));
       });
     }
   },

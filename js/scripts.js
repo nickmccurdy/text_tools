@@ -15,12 +15,9 @@ var Panels = {
 
   getHidden: function () {
     this.hidden_elements.length = 0;
-    var counter = 0,
-      i;
     Panels.all_elements.forEach(function (el) {
       if ($("#" + el).is(":hidden")) {
         Panels.hidden_elements.push(el);
-        counter += 1;
       }
     });
     Cookies.set("tt_hidden", this.hidden_elements.toString(), 365);
@@ -113,7 +110,7 @@ var View = {
     return query;
   },
 
-  convert: function (variable, element, watcherName) {
+  convert: function (variable, element) {
     if (variable !== element) {
       variable = element;
 
