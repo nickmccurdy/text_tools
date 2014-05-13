@@ -42,12 +42,10 @@ body {
 
 /*specific elements*/
 #find_counter {
-  color: black;
   font-weight: normal;
 }
 #regexp_toggle_label {
   font-weight: normal;
-  color: #DCDCDC;
 }
 #find_text, #replace_text, #list_start {
   width: 100%;
@@ -55,7 +53,6 @@ body {
 #number_list_label {
   font-weight: normal;
   display: inline;
-  color: black;
 }
 #cutoff, #repetitions {
   width: 43%;

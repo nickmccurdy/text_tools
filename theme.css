@@ -37,3 +37,14 @@ body {
 .nav-header:active {
   background-color: #000;
 }
+
+/*specific elements*/
+#find_counter {
+  color: black;
+}
+#regexp_toggle_label {
+  color: #DCDCDC;
+}
+#number_list_label {
+  color: black;
+}
