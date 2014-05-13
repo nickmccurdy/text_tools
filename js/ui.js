@@ -83,12 +83,12 @@ $(function () {
 
     $("#" + to_toggle).slideToggle();
 
-    if (right_object.hasClass("icon-plus-sign")) {
-      right_object.removeClass("icon-plus-sign");
-      right_object.addClass("icon-minus-sign");
-    } else if (right_object.hasClass("icon-minus-sign")) {
-      right_object.removeClass("icon-minus-sign");
-      right_object.addClass("icon-plus-sign");
+    if (right_object.hasClass("glyphicon-plus-sign")) {
+      right_object.removeClass("glyphicon-plus-sign");
+      right_object.addClass("glyphicon-minus-sign");
+    } else if (right_object.hasClass("glyphicon-minus-sign")) {
+      right_object.removeClass("glyphicon-minus-sign");
+      right_object.addClass("glyphicon-plus-sign");
     }
 
     Panels.getHidden();

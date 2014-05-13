@@ -6,7 +6,7 @@
   <title>Text Tools 2.0 dev</title>
   <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=2, user-scalable=1">
   <!-- css -->
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="theme.css">
   <!-- icons -->
@@ -17,97 +17,97 @@
 <body>
 
 <!--title bar-->
-<div class="row-fluid titlebar" id="titlebar">
-  <div class="span5">Input</div>
-  <div class="span2">Effects</div>
-  <div class="span5">Output</div>
+<div class="row titlebar" id="titlebar">
+  <div class="col-md-5">Input</div>
+  <div class="col-md-2">Effects</div>
+  <div class="col-md-5">Output</div>
 </div>
 
 <!--tool bar-->
-<div class="row-fluid toolbar" id="toolbar">
-  <div class="span12">
-    Limiter:&nbsp;<button class="btn btn-mini">All</button>
+<div class="row toolbar" id="toolbar">
+  <div class="col-md-12">
+    Limiter:&nbsp;<button class="btn btn-default btn-xs">All</button>
     Sections:&nbsp;<span class="btn-group">
-      <button class="btn btn-mini" id="toolbar_collapse_button">Collapse</button>
-      <button class="btn btn-mini" id="toolbar_expand_button">Expand</button>
+      <button class="btn btn-default btn-xs" id="toolbar_collapse_button">Collapse</button>
+      <button class="btn btn-default btn-xs" id="toolbar_expand_button">Expand</button>
     </span>
-    Top&nbsp;Bar:&nbsp;<button class="btn btn-mini" id="toolbar_titlebar_toggle">Toggle</button>
-    Spell&nbsp;Check:&nbsp;<button class="btn btn-mini">Toggle</button>
-    Autocomplete:&nbsp;<button class="btn btn-mini">Toggle</button>
+    Top&nbsp;Bar:&nbsp;<button class="btn btn-default btn-xs" id="toolbar_titlebar_toggle">Toggle</button>
+    Spell&nbsp;Check:&nbsp;<button class="btn btn-default btn-xs">Toggle</button>
+    Autocomplete:&nbsp;<button class="btn btn-default btn-xs">Toggle</button>
 
-    <button class="btn btn-mini pull-right" id="toolbar_close">X</button>
+    <button class="btn btn-default btn-xs pull-right" id="toolbar_close">X</button>
   </div>
 </div>
 
 <!--main ui space-->
-<div class="row-fluid" id="mainui">
+<div class="row" id="mainui">
 
   <!--text before-->
-  <div class="span5" id="text_before_container">
+  <div class="col-md-5" id="text_before_container">
     <textarea class="main-field" id="text_before"></textarea>
   </div>
 
   <!--effects panels-->
-  <ul class="span2 nav nav-list" id="effects">
+  <ul class="col-md-2 nav nav-list" id="effects">
 
     <ul class="nav nav-list">
 
       <li><a class="effect" data-effect="normal">
-        <i class="icon-home icon-white"></i> Normal
+        <i class="glyphicon glyphicon-home"></i> Normal
       </a></li>
 
       <li><a id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
-        <i class="icon-arrow-left icon-white"></i> Save Effect
+        <i class="glyphicon glyphicon-arrow-left"></i> Save Effect
       </a></li>
 
       <li><a id="clear" title="Clears all the input text and sets all effects to their defaults.">
-        <i class="icon-remove icon-white"></i> Clear
+        <i class="glyphicon glyphicon-remove"></i> Clear
       </a></li>
 
       <li><a id="toolbar_button" title="Toggles the advanced toolbar.">
-        <i class="icon-cog icon-white"></i> Toolbar
+        <i class="glyphicon glyphicon-cog"></i> Toolbar
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="case_panel">
-      <i class="icon-chevron-up icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-chevron-up pull-left"></i>
       Case
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="case_panel">
 
       <li><a class="effect" data-effect="lowercase">
-        <i class="icon-chevron-down icon-white"></i> Lowercase
+        <i class="glyphicon glyphicon-chevron-down"></i> Lowercase
       </a></li>
 
       <li><a class="effect" data-effect="uppercase">
-        <i class="icon-chevron-up icon-white"></i> Uppercase
+        <i class="glyphicon glyphicon-chevron-up"></i> Uppercase
       </a></li>
 
       <li><a class="effect" data-effect="titlecase">
-        <i class="icon-pencil icon-white"></i> Title Case
+        <i class="glyphicon glyphicon-pencil"></i> Title Case
       </a></li>
 
       <li><a class="effect" data-effect="htmllower">
-        <i class="icon-chevron-down icon-white"></i> HTML Lower
+        <i class="glyphicon glyphicon-chevron-down"></i> HTML Lower
       </a></li>
 
       <li><a class="effect" data-effect="htmlupper">
-        <i class="icon-chevron-up icon-white"></i> HTML Upper
+        <i class="glyphicon glyphicon-chevron-up"></i> HTML Upper
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="find_panel">
-      <i class="icon-search icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-search pull-left"></i>
       Find/Replace
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="find_panel">
 
       <li><a class="effect" data-effect="find">
-        <i class="icon-search icon-white"></i> Find
+        <i class="glyphicon glyphicon-search"></i> Find
         <span id="find_counter" style="color:black; font-weight:normal;"></span><br>
 
         <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
@@ -117,7 +117,7 @@
       </a></li>
 
       <li><a class="effect" data-effect="replace">
-        <i class="icon-edit icon-white"></i> Replace
+        <i class="glyphicon glyphicon-edit"></i> Replace
 
         <textarea id="replace_text" rows="2" style="width:100%"></textarea>
       </a></li>
@@ -125,39 +125,39 @@
     </ul>
 
     <li class="nav-header" data-toggle="sort_panel">
-      <i class="icon-chevron-right icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-chevron-right pull-left"></i>
       Sort
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="sort_panel">
 
       <li><a class="effect" data-effect="sortaz">
-        <i class="icon-chevron-left icon-white"></i> Sort A-Z
+        <i class="glyphicon glyphicon-chevron-left"></i> Sort A-Z
       </a></li>
 
       <li><a class="effect" data-effect="sortza">
-        <i class="icon-chevron-right icon-white"></i> Sort Z-A
+        <i class="glyphicon glyphicon-chevron-right"></i> Sort Z-A
       </a></li>
 
       <li><a class="effect" data-effect="sortreverse">
-        <i class="icon-random icon-white"></i> Sort Reverse
+        <i class="glyphicon glyphicon-random"></i> Sort Reverse
       </a></li>
 
       <li><a class="effect" data-effect="sortrandom">
-        <i class="icon-backward icon-white"></i> Sort Random
+        <i class="glyphicon glyphicon-backward"></i> Sort Random
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="list_panel">
-      <i class="icon-list icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-list pull-left"></i>
       Lists
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="list_panel">
 
       <li><a class="effect" data-effect="list">
-        <i class="icon-list icon-white"></i> List
+        <i class="glyphicon glyphicon-list"></i> List
 
         <input type="checkbox" id="number_list">
         <span id="number_list_label" style="font-weight:normal;display:inline;color:black;" title="Toggles numbered lists.">#</span>
@@ -166,74 +166,70 @@
       </a></li>
 
       <li><a class="effect" data-effect="remove_list">
-        <i class="icon-minus-sign icon-white"></i> List Remover
+        <i class="glyphicon glyphicon-minus-sign"></i> List Remover
 
-        <div class="input-append">
-          <input type="text" id="cutoff" style="width:43%" value="3">
-          <input type="button" class="btn" id="cutoff_up" value="+">
-          <input type="button" class="btn" id="cutoff_down" value="-">
-        </div>
+        <input type="text" id="cutoff" style="width:43%" value="3">
+        <input type="button" class="btn btn-default" id="cutoff_up" value="+">
+        <input type="button" class="btn btn-default" id="cutoff_down" value="-">
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="other_panel">
-      <i class="icon-gift icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-gift pull-left"></i>
       Other
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="other_panel">
 
       <li><a class="effect" data-effect="repeat">
-        <i class="icon-repeat icon-white"></i> Repeat
+        <i class="glyphicon glyphicon-repeat"></i> Repeat
 
-        <div class="input-append">
-          <input type="text" id="repetitions" style="width:43%" value="1">
-          <input type="button" class="btn" value="+">
-          <input type="button" class="btn" value="-"><br>
-        </div>
+        <input type="text" id="repetitions" style="width:43%" value="1">
+        <input type="button" class="btn btn-default" value="+">
+        <input type="button" class="btn btn-default" value="-"><br>
       </a></li>
 
       <li><a class="effect" data-effect="wordcount">
-        <i class="icon-check icon-white"></i> Word Count
+        <i class="glyphicon glyphicon-check"></i> Word Count
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="misc_panel">
-      <i class="icon-random icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-random pull-left"></i>
       Misc
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="misc_panel">
 
       <li><a class="effect" data-effect="rot13">
-        <i class="icon-forward icon-white"></i> ROT13
+        <i class="glyphicon glyphicon-forward"></i> ROT13
       </a></li>
 
       <li><a class="effect" data-effect="backwards">
-        <i class="icon-backward icon-white"></i> Backwards
+        <i class="glyphicon glyphicon-backward"></i> Backwards
       </a></li>
 
     </ul>
 
     <li class="nav-header" data-toggle="help_panel">
-      <i class="icon-question-sign icon-white pull-left"></i>
+      <i class="glyphicon glyphicon-question-sign pull-left"></i>
       Help
-      <i class="icon-plus-sign icon-white pull-right"></i>
+      <i class="glyphicon glyphicon-plus-sign pull-right"></i>
     </li>
     <ul class="nav nav-list" id="help_panel">
 
       <li><a id="about" href="#about_modal" data-toggle="modal">
-        <i class="icon-info-sign icon-white"></i> About
+        <i class="glyphicon glyphicon-info-sign"></i> About
       </a></li>
 
       <li><a id="help" href="help.html" target="_blank">
-        <i class="icon-question-sign icon-white"></i> Help
+        <i class="glyphicon glyphicon-question-sign"></i> Help
       </a></li>
 
       <li><a id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
-        <i class="icon-envelope icon-white"></i> Feedback
+        <i class="glyphicon glyphicon-envelope"></i> Feedback
       </a></li>
 
     </ul>
@@ -241,7 +237,7 @@
   </ul>
 
   <!--text after-->
-  <div class="span5" id="text_after_container">
+  <div class="col-md-5" id="text_after_container">
     <textarea class="main-field" id="text_after" readonly></textarea>
   </div>
 
@@ -267,7 +263,7 @@
 
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="js/cookies.js"></script>
 <script src="js/scripts.js"></script>
 <script src="js/ui.js"></script>
