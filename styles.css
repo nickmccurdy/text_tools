@@ -30,9 +30,8 @@ body {
 }
 
 /*effects*/
-.nav-header, .nav-list a {
+.nav-header, .list-group a {
   cursor: pointer;
-  font-size: 14px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
