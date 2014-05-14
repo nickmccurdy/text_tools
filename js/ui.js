@@ -2,9 +2,34 @@
 /*jslint node: true */
 /*global  $ */
 
-/*global Elements, Panels, View, ViewHelper, Watcher */
+/*global Elements, Panels, View, Watcher */
 
 "use strict";
+
+var ViewHelper = {
+
+  toggleCheck: function (element) {
+    element.checked = !element.checked;
+  },
+
+  //plus and minus buttons
+  valueUp: function (variable) {
+    variable.value = parseInt(variable.value, 10) + 1;
+  },
+
+  valueDown: function (variable) {
+    variable.value = parseInt(variable.value, 10) - 1;
+    if (parseInt(variable.value, 10) < 0) {
+      variable.value = "0";
+    }
+  },
+
+  //numbers only
+  numbersOnly: function (obj) {
+    obj.value = obj.value.replace(/\D/, "");
+  }
+
+};
 
 //USER INTERFACE
 $(function () {
