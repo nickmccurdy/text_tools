@@ -74,7 +74,7 @@ var View = {
       variable = element;
 
       var input = Elements.text_before.val(),
-        output = Effects[View.effect].execute(input),
+        output = Effects[View.effect](input),
         allow_auto_select = ["find", "replace", "list", "remove_list", "repeat"].indexOf(View.effect) === -1;
 
       if (Elements.find_text.val() !== "") {
