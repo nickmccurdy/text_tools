@@ -1,6 +1,5 @@
 /*jslint indent: 2 */
 /*jslint node: true */
-/*global  $ */
 
 /*jslint browser: true */
 
