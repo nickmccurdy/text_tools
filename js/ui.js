@@ -35,9 +35,7 @@ $(function () {
   View.convertAll();
 
   //start daemon scripts
-  Elements.body.bind("change keydown keyup paste cut", function () {
-    View.convertAll();
-  });
+  Elements.body.bind("change keydown keyup paste cut", View.convertAll);
   Elements.a.focus(View.regainFocus());
   Elements.text_before.focus(View.updateFocus(Elements.text_before));
   Elements.text_after.focus(View.updateFocus(Elements.text_after));
@@ -94,24 +92,12 @@ $(function () {
   });
 
   //more click events
-  Elements.outputToInput.click(function () {
-    View.outputToInput();
-  });
-  Elements.clear.click(function () {
-    View.clear();
-  });
-  Elements.clear.focus(function () {
-    Elements.text_before.focus();
-  });
-  Elements.find_effect.click(function () {
-    Elements.find_text.focus();
-  });
-  Elements.replace_effect.click(function () {
-    Elements.replace_text.focus();
-  });
-  Elements.regexp_toggle.click(function () {
-    View.convertAll();
-  });
+  Elements.outputToInput.click(View.outputToInput);
+  Elements.clear.click(View.clear);
+  Elements.clear.focus(Elements.text_before.focus);
+  Elements.find_effect.click(Elements.find_text.focus);
+  Elements.replace_effect.click(Elements.replace_text.focus);
+  Elements.regexp_toggle.click(View.convertAll);
   Elements.regexp_toggle.focus(function () {
     if (View.effect !== 'replace') {
       View.toEffect('find');
