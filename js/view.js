@@ -104,13 +104,3 @@ var View = {
   }
 
 };
-
-/*
-var openPanel = function(panel_name) {
-  if(last.panel) {
-    toggle(last.panel)
-  };
-  toggle(panel_name);
-  last.panel = panel_name;
-};
-*/
