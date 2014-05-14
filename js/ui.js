@@ -2,7 +2,7 @@
 /*jslint node: true */
 /*global  $ */
 
-/*global Elements, Panels, View, Watcher */
+/*global Elements, Panels, View */
 
 "use strict";
 
@@ -34,11 +34,11 @@ $(function () {
   Elements.normal_effect.click();
   Panels.init();
   Elements.text_before.focus();
-  Watcher.convertAll();
+  View.convertAll();
 
   //start daemon scripts
   Elements.body.bind("change keydown keyup paste cut", function () {
-    Watcher.convertAll();
+    View.convertAll();
   });
   Elements.a.focus(View.regainFocus());
   Elements.text_before.focus(View.updateFocus(Elements.text_before));
@@ -54,7 +54,7 @@ $(function () {
     View.toEffect(new_effect);
     Elements.effects.removeClass("active");
     $(this).addClass("active");
-    Watcher.convertAll();
+    View.convertAll();
   });
 
   //panel toggling
@@ -112,7 +112,7 @@ $(function () {
     Elements.replace_text.focus();
   });
   Elements.regexp_toggle.click(function () {
-    Watcher.convertAll();
+    View.convertAll();
   });
   Elements.regexp_toggle.focus(function () {
     if (View.effect !== 'replace') {
@@ -121,7 +121,7 @@ $(function () {
     }
   });
   Elements.regexp_toggle_label.click(function () {
-    Watcher.convertAll();
+    View.convertAll();
     View.toggleCheck(Elements.regexp_toggle);
   });
   Elements.regexp_toggle_label.focus(function () {
@@ -131,7 +131,7 @@ $(function () {
     Elements.find_effect.click();
   });
   Elements.number_list.click(function () {
-    Watcher.convertAll();
+    View.convertAll();
     View.selectAll(Elements.list_start);
   });
   Elements.number_list.focus(function () {
@@ -141,7 +141,7 @@ $(function () {
   Elements.number_list_label.click(function () {
     View.toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
     Elements.list_effect.click();
-    Watcher.convertAll();
+    View.convertAll();
   });
   Elements.cutoff.focus(function () {
     View.toEffect('remove_list').selectAll(Elements.cutoff);

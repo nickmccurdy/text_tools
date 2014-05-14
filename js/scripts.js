@@ -15,6 +15,15 @@ var View = {
     panel: []
   },
 
+  watched: {
+    input: undefined,
+    find: undefined,
+    replace: undefined,
+    list_start: undefined,
+    repetitions: undefined,
+    cutoff: undefined
+  },
+
   selectAll: function (field) {
     field.focus();
     field.select();
@@ -86,6 +95,14 @@ var View = {
       //console.log(watcherName+"watcher activated");
     }
     return View;
+  },
+
+  convertAll: function () { //input watcher
+    if (View.watched.input !== Elements.text_before) {
+      View.convert();
+      //console.log("main watcher activated");
+    }
+    View.convert(View.watched.find, Elements.find_text, "find").convert(View.watched.replace, Elements.replace_text, "replace").convert(View.watched.list_start, Elements.list_start, "list_start").convert(View.watched.repetitions, Elements.repetitions, "repetitions").convert(View.watched.cutoff, Elements.cutoff, "cutoff"); //buggy
   }
 
 };
@@ -99,24 +116,3 @@ var openPanel = function(panel_name) {
   last.panel = panel_name;
 };
 */
-
-var Watcher = {
-
-  watched: {
-    input: undefined,
-    find: undefined,
-    replace: undefined,
-    list_start: undefined,
-    repetitions: undefined,
-    cutoff: undefined
-  },
-
-  convertAll: function () { //input watcher
-    if (Watcher.watched.input !== Elements.text_before) {
-      View.convert();
-      //console.log("main watcher activated");
-    }
-    View.convert(Watcher.watched.find, Elements.find_text, "find").convert(Watcher.watched.replace, Elements.replace_text, "replace").convert(Watcher.watched.list_start, Elements.list_start, "list_start").convert(Watcher.watched.repetitions, Elements.repetitions, "repetitions").convert(Watcher.watched.cutoff, Elements.cutoff, "cutoff"); //buggy
-  }
-
-};

@@ -2,7 +2,7 @@
 /*jslint node: true */
 /*global  $ */
 
-/*global Elements, View, Watcher, Helpers */
+/*global Elements, View, Helpers */
 
 "use strict";
 
@@ -80,7 +80,7 @@ var Effects = {
     execute: function (input) {
       var text_array = input.split("\n");
       text_array.forEach(function (value, i) {
-        text_array[i] = value.substring(Watcher.watched.cutoff);
+        text_array[i] = value.substring(View.watched.cutoff);
       });
       return text_array.join("\n");
     }
