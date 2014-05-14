@@ -11,7 +11,7 @@ var Helpers = {
   },
 
   //html upper/lower
-  htmlCaseChanger: function (input, html_case_mode) {
+  htmlCaseChanger: function (input, uppercase) {
     var last_input = input,
       content_array = [],
       i,
@@ -28,14 +28,7 @@ var Helpers = {
     }
     content_array.push(last_input);
     for (i = 1; i < content_array.length; i += 2) { //change the case of html
-      switch (html_case_mode) {
-      case "lower":
-        content_array[i] = content_array[i].toLowerCase();
-        break;
-      case "upper":
-        content_array[i] = content_array[i].toUpperCase();
-        break;
-      }
+      content_array[i] = content_array[i][uppercase ? "toUpperCase" : "toLowerCase"]();
     }
     return content_array.join(""); //set this value as blank when not bug testing
   },

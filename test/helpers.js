@@ -22,12 +22,12 @@ describe("Helpers", function () {
 
   describe(".htmlCaseChanger", function () {
     it("uppercases a <strong> tag", function () {
-      expect(Helpers.htmlCaseChanger("<strong>hello</strong>", "upper"))
+      expect(Helpers.htmlCaseChanger("<strong>hello</strong>", true))
             .to.be("<STRONG>hello</STRONG>");
     });
 
     it("lowercases a <STRONG> tag", function () {
-      expect(Helpers.htmlCaseChanger("<STRONG>HELLO</STRONG>", "lower"))
+      expect(Helpers.htmlCaseChanger("<STRONG>HELLO</STRONG>", false))
             .to.be("<strong>HELLO</strong>");
     });
   });
