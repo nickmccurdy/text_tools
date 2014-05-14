@@ -1,7 +1,6 @@
 /*jslint indent: 2 */
 /*jslint node: true */
 /*global  $ */
-
 /*global Elements, Panels, View */
 
 "use strict";
@@ -122,7 +121,7 @@ $(function () {
   });
   Elements.regexp_toggle_label.click(function () {
     View.convertAll();
-    View.toggleCheck(Elements.regexp_toggle);
+    toggleCheck(Elements.regexp_toggle);
   });
   Elements.regexp_toggle_label.focus(function () {
     if (View.effect !== 'replace') {
@@ -139,7 +138,7 @@ $(function () {
     Elements.list_effect.click();
   });
   Elements.number_list_label.click(function () {
-    View.toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
+    toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
     Elements.list_effect.click();
     View.convertAll();
   });
