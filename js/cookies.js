@@ -17,7 +17,7 @@ var Cookies = {
       expires = "; expires=" + date.toGMTString();
     }
     document.cookie = name + "=" + value + expires + "; path=/";
-    return this;
+    return Cookies;
   },
 
   get: function (name) {
@@ -38,7 +38,7 @@ var Cookies = {
 
   clear: function (name) {
     Cookies.set(name, "", -1);
-    return this;
+    return Cookies;
   }
 
 };

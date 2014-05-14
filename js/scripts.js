@@ -14,42 +14,42 @@ var Panels = {
   hidden_elements: ["toolbar", "case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "misc_panel", "help_panel"],
 
   getHidden: function () {
-    this.hidden_elements.length = 0;
+    Panels.hidden_elements.length = 0;
     Panels.all_elements.forEach(function (el) {
       if ($("#" + el).is(":hidden")) {
         Panels.hidden_elements.push(el);
       }
     });
-    Cookies.set("tt_hidden", this.hidden_elements.toString(), 365);
-    return this;
+    Cookies.set("tt_hidden", Panels.hidden_elements.toString(), 365);
+    return Panels;
   },
 
   //collapse and expand all sections
   init: function () {
     var hidden_elements_cookie = Cookies.get("tt_hidden");
     if (hidden_elements_cookie) {
-      this.hidden_elements = hidden_elements_cookie.split(",");
+      Panels.hidden_elements = hidden_elements_cookie.split(",");
     }
-    this.hidden_elements.forEach(function (value) {
+    Panels.hidden_elements.forEach(function (value) {
       $("#" + value).hide();
     });
-    return this;
+    return Panels;
   },
 
   //collapse and expand all sections
   toggle: function (visible) {
     var i,
       panel;
-    for (i = 0; i < this.all_panels.length; i += 1) {
-      panel = $("#" + this.all_panels[i]);
+    for (i = 0; i < Panels.all_panels.length; i += 1) {
+      panel = $("#" + Panels.all_panels[i]);
       if (visible) {
         panel.show();
       } else {
         panel.hide();
       }
     }
-    this.getHidden();
-    return this;
+    Panels.getHidden();
+    return Panels;
   }
 
 };
@@ -66,18 +66,18 @@ var View = {
   selectAll: function (field) {
     field.focus();
     field.select();
-    return this;
+    return View;
   },
 
   outputToInput: function () {
     Elements.text_before.val(Elements.text_after.val());
-    return this;
+    return View;
   },
 
   toEffect: function (change) {
-    this.effect = change;
-    this.convert();
-    return this;
+    View.effect = change;
+    View.convert();
+    return View;
   },
 
   clear: function () {
@@ -89,17 +89,17 @@ var View = {
     Elements.cutoff.val("3");
     Elements.repetitions.val("1");
     Elements.number_list.attr("checked", false);
-    return this;
+    return View;
   },
 
   updateFocus: function (newFocus) {
-    this.last.focused = newFocus;
-    return this;
+    View.last.focused = newFocus;
+    return View;
   },
 
   regainFocus: function () {
-    this.last.focused.focus();
-    return this;
+    View.last.focused.focus();
+    return View;
   },
 
   getQuery: function () {
@@ -115,11 +115,11 @@ var View = {
       variable = element;
 
       var input = Elements.text_before.val(),
-        output = Effects[this.effect].execute(input),
-        allow_auto_select = ["find", "replace", "list", "remove_list", "repeat"].indexOf(this.effect) === -1;
+        output = Effects[View.effect].execute(input),
+        allow_auto_select = ["find", "replace", "list", "remove_list", "repeat"].indexOf(View.effect) === -1;
 
       if (Elements.find_text.val() !== "") {
-        Elements.counts_find.html(" (" + input.split(this.getQuery()).length - 1 + ")");
+        Elements.counts_find.html(" (" + input.split(View.getQuery()).length - 1 + ")");
       } else {
         Elements.counts_find.html("");
       }
@@ -127,13 +127,13 @@ var View = {
       Elements.text_after.val(output);
 
       //output autoselect exclusion
-      if (this.last.focused === Elements.text_after && !allow_auto_select) {
+      if (View.last.focused === Elements.text_after && !allow_auto_select) {
         View.selectAll(Elements.text_after);
       }
 
       //console.log(watcherName+"watcher activated");
     }
-    return this;
+    return View;
   }
 
 };
@@ -185,11 +185,11 @@ var Watcher = {
   },
 
   convertAll: function () { //input watcher
-    if (this.watched.input !== Elements.text_before) {
+    if (Watcher.watched.input !== Elements.text_before) {
       View.convert();
       //console.log("main watcher activated");
     }
-    View.convert(this.watched.find, Elements.find_text, "find").convert(this.watched.replace, Elements.replace_text, "replace").convert(this.watched.list_start, Elements.list_start, "list_start").convert(this.watched.repetitions, Elements.repetitions, "repetitions").convert(this.watched.cutoff, Elements.cutoff, "cutoff"); //buggy
+    View.convert(Watcher.watched.find, Elements.find_text, "find").convert(Watcher.watched.replace, Elements.replace_text, "replace").convert(Watcher.watched.list_start, Elements.list_start, "list_start").convert(Watcher.watched.repetitions, Elements.repetitions, "repetitions").convert(Watcher.watched.cutoff, Elements.cutoff, "cutoff"); //buggy
   }
 
 };
