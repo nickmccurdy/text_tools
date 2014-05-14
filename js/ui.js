@@ -6,30 +6,26 @@
 
 "use strict";
 
-var ViewHelper = {
+function toggleCheck(element) {
+  element.checked = !element.checked;
+}
 
-  toggleCheck: function (element) {
-    element.checked = !element.checked;
-  },
+//plus and minus buttons
+function valueUp(variable) {
+  variable.value = parseInt(variable.value, 10) + 1;
+}
 
-  //plus and minus buttons
-  valueUp: function (variable) {
-    variable.value = parseInt(variable.value, 10) + 1;
-  },
-
-  valueDown: function (variable) {
-    variable.value = parseInt(variable.value, 10) - 1;
-    if (parseInt(variable.value, 10) < 0) {
-      variable.value = "0";
-    }
-  },
-
-  //numbers only
-  numbersOnly: function (obj) {
-    obj.value = obj.value.replace(/\D/, "");
+function valueDown(variable) {
+  variable.value = parseInt(variable.value, 10) - 1;
+  if (parseInt(variable.value, 10) < 0) {
+    variable.value = "0";
   }
+}
 
-};
+//numbers only
+function numbersOnly(obj) {
+  obj.value = obj.value.replace(/\D/, "");
+}
 
 //USER INTERFACE
 $(function () {
@@ -157,15 +153,15 @@ $(function () {
     }
   });
   Elements.cutoff.keyup(function () {
-    ViewHelper.numbersOnly(this);
+    numbersOnly(this);
   });
   Elements.cutoff_up.click(function () {
-    ViewHelper.valueUp(Elements.cutoff);
+    valueUp(Elements.cutoff);
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
   Elements.cutoff_down.click(function () {
-    ViewHelper.valueDown(Elements.cutoff);
+    valueDown(Elements.cutoff);
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
@@ -179,15 +175,15 @@ $(function () {
     }
   });
   Elements.repetitions.keyup(function () {
-    ViewHelper.numbersOnly(this);
+    numbersOnly(this);
   });
   Elements.repetitions_up.click(function () {
-    ViewHelper.valueUp(Elements.repetitions);
+    valueUp(Elements.repetitions);
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });
   Elements.repetitions_down.click(function () {
-    ViewHelper.valueDown(Elements.repetitions);
+    valueDown(Elements.repetitions);
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });
