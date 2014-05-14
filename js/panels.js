@@ -1,7 +1,6 @@
 /*jslint indent: 2 */
 /*jslint node: true */
-/*global  $ */
-/*global Cookies */
+/*global $, Cookies */
 
 "use strict";
 

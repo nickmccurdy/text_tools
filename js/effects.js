@@ -1,8 +1,5 @@
 /*jslint indent: 2 */
-/*jslint node: true */
-/*global  $ */
-
-/*global Elements, View, Helpers */
+/*global $, Elements, View, Helpers */
 
 "use strict";
 

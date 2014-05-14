@@ -1,6 +1,4 @@
 /*jslint indent: 2 */
-/*jslint node: true */
-
 /*jslint browser: true */
 
 "use strict";

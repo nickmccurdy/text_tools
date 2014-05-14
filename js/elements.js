@@ -1,6 +1,6 @@
 /*jslint indent: 2 */
 /*jslint node: true */
-/*global  $ */
+/*global $ */
 
 "use strict";
 
