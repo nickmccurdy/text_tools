@@ -155,12 +155,12 @@ var Effects = {
 
   wordcount: {
     execute: function (input) {
-      var lines = input.split("\n").length;
-      var occurences = {
-        chars: input.length,
-        lines: lines,
-        words: input === "" ? 0 : input.split(" ").length + lines - 1
-      };
+      var lines = input.split("\n").length,
+        occurences = {
+          chars: input.length,
+          lines: lines,
+          words: input === "" ? 0 : input.split(" ").length + lines - 1
+        };
       return "Characters: " + occurences.chars + "\nWords: " + occurences.words + "\nLines: " + occurences.lines;
     }
   },
