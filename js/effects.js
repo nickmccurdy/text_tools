@@ -2,7 +2,7 @@
 /*jslint node: true */
 /*global  $ */
 
-/*global Elements, View, Watcher, modifyAsList, htmlCaseChanger */
+/*global Elements, View, Watcher, Helpers */
 
 "use strict";
 
@@ -28,19 +28,19 @@ var Effects = {
 
   htmllower: {
     execute: function (input) {
-      return htmlCaseChanger(input, "lower");
+      return Helpers.htmlCaseChanger(input, "lower");
     }
   },
 
   htmlupper: {
     execute: function (input) {
-      return htmlCaseChanger(input, "upper");
+      return Helpers.htmlCaseChanger(input, "upper");
     }
   },
 
   titlecase: {
     execute: function (input) {
-      return input.toLowerCase().toTitleCase();
+      return Helpers.toTitleCase(input.toLowerCase());
     }
   },
 
@@ -106,7 +106,7 @@ var Effects = {
 
   sortaz: {
     execute: function (input) {
-      return modifyAsList(input, function (input_array) {
+      return Helpers.modifyAsList(input, function (input_array) {
         return input_array.sort();
       });
     }
@@ -114,7 +114,7 @@ var Effects = {
 
   sortza: {
     execute: function (input) {
-      return modifyAsList(input, function (input_array) {
+      return Helpers.modifyAsList(input, function (input_array) {
         return input_array.sort().reverse();
       });
     }
@@ -122,7 +122,7 @@ var Effects = {
 
   sortreverse: {
     execute: function (input) {
-      return modifyAsList(input, function (input_array) {
+      return Helpers.modifyAsList(input, function (input_array) {
         return input_array.reverse();
       });
     }
@@ -130,7 +130,7 @@ var Effects = {
 
   sortrandom: {
     execute: function (input) {
-      return modifyAsList(input, function (input_array) {
+      return Helpers.modifyAsList(input, function (input_array) {
         return input_array.sort(function () {
           return 0.5 - Math.random();
         });

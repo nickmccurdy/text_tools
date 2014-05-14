@@ -6,49 +6,50 @@
 
 "use strict";
 
-var modifyAsList = function (input, callback) {
-  return callback(input.split("\n")).join("\n");
-};
+var Helpers = {
 
-//html upper/lower
-var htmlCaseChanger = function (input, html_case_mode) {
-  var last_input = input,
-    content_array = [],
-    i,
-    bracket;
-  for (i = 1; i < input.split("<").length; i += 1) { //set the input into an array
-    if (last_input.indexOf("<") !== -1) {
-      bracket = "<";
-    }
-    if (last_input.indexOf(">") !== -1) {
-      bracket = ">";
-    }
-    content_array.push(last_input.substring(0, last_input.indexOf(bracket)) + bracket);
-    last_input = last_input.substring(last_input.indexOf(bracket) + 1);
-  }
-  content_array.push(last_input);
-  for (i = 1; i < content_array.length; i += 2) { //change the case of html
-    switch (html_case_mode) {
-    case "lower":
-      content_array[i] = content_array[i].toLowerCase();
-      break;
-    case "upper":
-      content_array[i] = content_array[i].toUpperCase();
-      break;
-    }
-  }
-  return content_array.join(""); //set this value as blank when not bug testing
-};
+  modifyAsList: function (input, callback) {
+    return callback(input.split("\n")).join("\n");
+  },
 
-/*
-* To Title Case 2.0.1 – http://individed.com/code/to-title-case/
-* Copyright © 2008–2012 David Gouch. Licensed under the MIT License.
-*/
-if (typeof String.prototype.toTitleCase !== "function") {
-  String.prototype.toTitleCase = function () {
+  //html upper/lower
+  htmlCaseChanger: function (input, html_case_mode) {
+    var last_input = input,
+      content_array = [],
+      i,
+      bracket;
+    for (i = 1; i < input.split("<").length; i += 1) { //set the input into an array
+      if (last_input.indexOf("<") !== -1) {
+        bracket = "<";
+      }
+      if (last_input.indexOf(">") !== -1) {
+        bracket = ">";
+      }
+      content_array.push(last_input.substring(0, last_input.indexOf(bracket)) + bracket);
+      last_input = last_input.substring(last_input.indexOf(bracket) + 1);
+    }
+    content_array.push(last_input);
+    for (i = 1; i < content_array.length; i += 2) { //change the case of html
+      switch (html_case_mode) {
+      case "lower":
+        content_array[i] = content_array[i].toLowerCase();
+        break;
+      case "upper":
+        content_array[i] = content_array[i].toUpperCase();
+        break;
+      }
+    }
+    return content_array.join(""); //set this value as blank when not bug testing
+  },
+
+  /*
+  * To Title Case 2.0.1 – http://individed.com/code/to-title-case/
+  * Copyright © 2008–2012 David Gouch. Licensed under the MIT License.
+  */
+  toTitleCase: function (string) {
     var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|vs?\.?|via)$/i;
 
-    return this.replace(/([^\W_]+[^\s\-]*) */g, function (match, p1, index, title) {
+    return string.replace(/([^\W_]+[^\s\-]*) */g, function (match, p1, index, title) {
       if (index > 0 &&
           index + p1.length !== title.length &&
           p1.search(smallWords) > -1 &&
@@ -63,5 +64,6 @@ if (typeof String.prototype.toTitleCase !== "function") {
 
       return match.charAt(0).toUpperCase() + match.substr(1);
     });
-  };
-}
+  }
+
+};
