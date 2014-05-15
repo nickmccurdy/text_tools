@@ -18,13 +18,13 @@ var Panels = {
         Panels.hidden_elements.push(el);
       }
     });
-    Cookies("tt_hidden", Panels.hidden_elements.toString());
+    Cookies.set("tt_hidden", Panels.hidden_elements.toString());
     return Panels;
   },
 
   //collapse and expand all sections
   init: function () {
-    var hidden_elements_cookie = Cookies("tt_hidden");
+    var hidden_elements_cookie = Cookies.get("tt_hidden");
     if (hidden_elements_cookie) {
       Panels.hidden_elements = hidden_elements_cookie.split(",");
     }
