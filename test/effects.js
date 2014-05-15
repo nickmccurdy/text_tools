@@ -1,6 +1,12 @@
 describe("Effects", function () {
   var shortInput = "Hello world";
 
+  sinon.stub(Elements.cutoff, "val").returns(2);
+  sinon.stub(Elements.find_text, "val").returns("two");
+  sinon.stub(Elements.repetitions, "text").returns("5");
+  sinon.stub(Elements.replace_text, "val").returns("to");
+  sinon.stub(View, "getQuery").returns("two");
+
   describe(".normal", function () {
     it("returns the unchanged input", function () {
       expect(Effects.normal(shortInput)).to.be(shortInput);
@@ -40,11 +46,19 @@ describe("Effects", function () {
   });
 
   describe(".find", function () {
-    it("has tests with support for extra options");
+    it("finds and uppercases a substring (case sensitive)", function () {
+      expect(Effects.find("one two three")).to.be("one TWO three");
+    });
+
+    it("finds and uppercases a substring (case insensitive)");
   });
 
   describe(".replace", function () {
-    it("has tests with support for extra options");
+    it("finds and replaces a substring (case sensitive)", function () {
+      expect(Effects.replace("one two three")).to.be("one to three");
+    });
+
+    it("finds and replaces a substring (case insensitive)");
   });
 
   describe(".list", function () {
@@ -52,11 +66,15 @@ describe("Effects", function () {
   });
 
   describe(".remove_list", function () {
-    it("has tests with support for extra options");
+    it("removes the first two characters from every line of the input", function () {
+      expect(Effects.remove_list("- one\n- two\n- three")).to.be("one\ntwo\nthree");
+    });
   });
 
   describe(".repeat", function () {
-    it("has tests with support for extra options");
+    it("repeats a string a certain number of times", function () {
+      expect(Effects.repeat("swag ")).to.be("swag swag swag swag swag ");
+    });
   });
 
   describe(".wordcount", function () {

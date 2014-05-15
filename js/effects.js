@@ -50,7 +50,11 @@ var Effects = {
       result = last_input.slice(0, last_input.length - 1);
     } else {
       start_text = Elements.list_start.val();
-      result = start_text + input.replace("\n", "\n" + start_text);
+      result = Helpers.modifyAsList(input, function(list) {
+        return list.map(function (line) {
+          return start_text + line;
+        });
+      });
     }
     return result;
   },
@@ -58,13 +62,13 @@ var Effects = {
   remove_list: function (input) {
     var text_array = input.split("\n");
     text_array.forEach(function (value, i) {
-      text_array[i] = value.substring(View.watched.cutoff);
+      text_array[i] = value.substring(Elements.cutoff.val());
     });
     return text_array.join("\n");
   },
 
   repeat: function (input) {
-    return input.repeat(parseInt(Elements.repetitions.text(), 10));
+    return new Array(parseInt(Elements.repetitions.text(), 10) + 1).join(input);
   },
 
   wordcount: function (input) {
