@@ -41,15 +41,19 @@ var Effects = {
     var start_text = Elements.list_start.val();
 
     return Helpers.modifyAsList(input, function (list) {
+      var newList;
+
       if (Elements.number_list.attr("checked")) {
-        return list.map(function (line, index) {
-          return "" + (index + 1) + start_text + line;
+        newList = list.map(function (line, index) {
+          return (index + 1).toString() + start_text + line;
         });
       } else {
-        return list.map(function (line) {
+        newList = list.map(function (line) {
           return start_text + line;
         });
       }
+
+      return newList;
     });
   },
 
