@@ -46,19 +46,27 @@ describe("Effects", function () {
   });
 
   describe(".find", function () {
-    it("finds and uppercases a substring (case sensitive)", function () {
-      expect(Effects.find("one two three")).to.be("one TWO three");
+    describe("when case sensitive", function () {
+      it("finds and uppercases a substring", function () {
+        expect(Effects.find("one two three")).to.be("one TWO three");
+      });
     });
 
-    it("finds and uppercases a substring (case insensitive)");
+    describe("when case insensitive", function () {
+      it("finds and uppercases a substring");
+    });
   });
 
   describe(".replace", function () {
-    it("finds and replaces a substring (case sensitive)", function () {
-      expect(Effects.replace("one two three")).to.be("one to three");
+    context("when case sensitive", function () {
+      it("finds and replaces a substring", function () {
+        expect(Effects.replace("one two three")).to.be("one to three");
+      });
     });
 
-    it("finds and replaces a substring (case insensitive)");
+    context("when case insensitive", function () {
+      it("finds and replaces a substring");
+    });
   });
 
   describe(".list", function () {
