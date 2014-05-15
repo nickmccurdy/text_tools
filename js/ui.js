@@ -4,26 +4,28 @@
 
 "use strict";
 
-function toggleCheck(element) {
-  element.checked = !element.checked;
-}
+var UI = {
+  toggleCheck: function (element) {
+    element.checked = !element.checked;
+  },
 
-//plus and minus buttons
-function valueUp(variable) {
-  variable.value = parseInt(variable.value, 10) + 1;
-}
+  //plus and minus buttons
+  valueUp: function (variable) {
+    variable.value = parseInt(variable.value, 10) + 1;
+  },
 
-function valueDown(variable) {
-  variable.value = parseInt(variable.value, 10) - 1;
-  if (parseInt(variable.value, 10) < 0) {
-    variable.value = "0";
+  valueDown: function (variable) {
+    variable.value = parseInt(variable.value, 10) - 1;
+    if (parseInt(variable.value, 10) < 0) {
+      variable.value = "0";
+    }
+  },
+
+  //numbers only
+  numbersOnly: function (obj) {
+    obj.value = obj.value.replace(/\D/g, "");
   }
-}
-
-//numbers only
-function numbersOnly(obj) {
-  obj.value = obj.value.replace(/\D/g, "");
-}
+};
 
 //USER INTERFACE
 $(function () {
@@ -106,7 +108,7 @@ $(function () {
   });
   Elements.regexp_toggle_label.click(function () {
     View.convertAll();
-    toggleCheck(Elements.regexp_toggle);
+    UI.toggleCheck(Elements.regexp_toggle);
   });
   Elements.regexp_toggle_label.focus(function () {
     if (View.effect !== 'replace') {
@@ -123,7 +125,7 @@ $(function () {
     Elements.list_effect.click();
   });
   Elements.number_list_label.click(function () {
-    toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
+    UI.toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
     Elements.list_effect.click();
     View.convertAll();
   });
@@ -137,15 +139,15 @@ $(function () {
     }
   });
   Elements.cutoff.keyup(function () {
-    numbersOnly(this);
+    UI.numbersOnly(this);
   });
   Elements.cutoff_up.click(function () {
-    valueUp(Elements.cutoff);
+    UI.valueUp(Elements.cutoff);
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
   Elements.cutoff_down.click(function () {
-    valueDown(Elements.cutoff);
+    UI.valueDown(Elements.cutoff);
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
@@ -159,15 +161,15 @@ $(function () {
     }
   });
   Elements.repetitions.keyup(function () {
-    numbersOnly(this);
+    UI.numbersOnly(this);
   });
   Elements.repetitions_up.click(function () {
-    valueUp(Elements.repetitions);
+    UI.valueUp(Elements.repetitions);
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });
   Elements.repetitions_down.click(function () {
-    valueDown(Elements.repetitions);
+    UI.valueDown(Elements.repetitions);
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });

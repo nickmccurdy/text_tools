@@ -1,4 +1,4 @@
-describe("The UI", function () {
+describe("UI", function () {
   var checkbox, numericInput, textInput;
 
   beforeEach(function () {
@@ -15,34 +15,34 @@ describe("The UI", function () {
 
   describe(".toggleCheck", function () {
     it("checks an unchecked element", function () {
-      toggleCheck(checkbox);
+      UI.toggleCheck(checkbox);
       expect(checkbox.checked).to.be(true);
     });
 
     it("unchecks an checked element", function () {
       checkbox.checked = true;
-      toggleCheck(checkbox);
+      UI.toggleCheck(checkbox);
       expect(checkbox.checked).to.be(false);
     });
   });
 
   describe(".valueUp", function () {
     it("increases the value of an element by 1", function () {
-      valueUp(numericInput);
+      UI.valueUp(numericInput);
       expect(numericInput.value).to.be("6");
     });
   });
 
   describe(".valueDown", function () {
     it("decreases the value of an element by 1", function () {
-      valueDown(numericInput);
+      UI.valueDown(numericInput);
       expect(numericInput.value).to.be("4");
     });
   });
 
   describe(".numbersOnly", function () {
     it("removes all non-numeric characters from an element's value", function () {
-      numbersOnly(textInput);
+      UI.numbersOnly(textInput);
       expect(textInput.value).to.be("24");
     });
   });
