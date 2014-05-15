@@ -60,30 +60,58 @@ describe("Effects", function () {
   });
 
   describe(".wordcount", function () {
-    it("has tests");
+    it("counts the characters, words, and lines in a string", function () {
+      expect(Effects.wordcount("one two\nthree"))
+            .to.be("Characters: 13\nWords: 3\nLines: 2");
+    });
   });
 
   describe(".sortaz", function () {
-    it("has tests");
+    it("sorts the input alphabetically", function () {
+      expect(Effects.sortaz("b\na\nc")).to.be("a\nb\nc");
+    });
   });
 
   describe(".sortza", function () {
-    it("has tests");
+    it("sorts the input alphabetically in reverse", function () {
+      expect(Effects.sortza("b\na\nc")).to.be("c\nb\na");
+    });
   });
 
   describe(".sortreverse", function () {
-    it("has tests");
+    it("sorts the input in reverse", function () {
+      expect(Effects.sortreverse("b\na\nc")).to.be("c\na\nb");
+    });
   });
 
   describe(".sortrandom", function () {
-    it("has tests");
+    it("sorts the input randomly", function () {
+      var possibleResults = [
+        "a\nb\nc",
+        "a\nc\nb",
+        "b\na\nc",
+        "b\nc\na",
+        "c\na\nb",
+        "c\nb\na"
+      ];
+      expect(Effects.sortrandom("b\na\nc"))
+            .to.match(new RegExp(possibleResults.join("|")));
+    });
   });
 
   describe(".rot13", function () {
-    it("has tests");
+    it("encrypts the input into rot13", function () {
+      expect(Effects.rot13(shortInput)).to.be("Uryyb jbeyq");
+    });
+
+    it("decrypts the input from rot13", function () {
+      expect(Effects.rot13("Uryyb jbeyq")).to.be(shortInput);
+    });
   });
 
   describe(".backwards", function () {
-    it("has tests");
+    it("returns the input backwards", function () {
+      expect(Effects.backwards(shortInput)).to.be("dlrow olleH");
+    });
   });
 });
