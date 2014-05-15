@@ -18,11 +18,11 @@ var Effects = {
   },
 
   htmllower: function (input) {
-    return Helpers.htmlCaseChanger(input, "lower");
+    return Helpers.htmlCaseChanger(input, false);
   },
 
   htmlupper: function (input) {
-    return Helpers.htmlCaseChanger(input, "upper");
+    return Helpers.htmlCaseChanger(input, true);
   },
 
   titlecase: function (input) {
