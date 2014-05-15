@@ -7,12 +7,24 @@
     <link rel="stylesheet" href="mocha.css" />
   </head>
   <body>
+    <!-- mocha setup -->
     <div id="mocha"></div>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/expect.js/0.2.0/expect.min.js"></script>
     <script src="mocha.js"></script>
     <script>mocha.setup('bdd')</script>
+
+    <!-- source files -->
     <script src="../js/helpers.js"></script>
+
+    <!-- test files -->
+    <script src="cookies.js"></script>
+    <script src="effects.js"></script>
+    <script src="elements.js"></script>
     <script src="helpers.js"></script>
+    <script src="panels.js"></script>
+    <script src="ui.js"></script>
+    <script src="view.js"></script>
+
     <script>
       mocha.run();
     </script>
