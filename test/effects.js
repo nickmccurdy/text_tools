@@ -46,26 +46,26 @@ describe("Effects", function () {
   });
 
   describe(".find", function () {
-    describe("when case sensitive", function () {
+    context("without a regex", function () {
       it("finds and uppercases a substring", function () {
         expect(Effects.find("one two three")).to.be("one TWO three");
       });
     });
 
-    describe("when case insensitive", function () {
-      it("finds and uppercases a substring");
+    context("with a regex", function () {
+      it("finds and uppercases regex matches");
     });
   });
 
   describe(".replace", function () {
-    context("when case sensitive", function () {
+    context("without a regex", function () {
       it("finds and replaces a substring", function () {
         expect(Effects.replace("one two three")).to.be("one to three");
       });
     });
 
-    context("when case insensitive", function () {
-      it("finds and replaces a substring");
+    context("with a regex", function () {
+      it("finds and replaces regex matches");
     });
   });
 
