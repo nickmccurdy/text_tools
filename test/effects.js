@@ -70,7 +70,29 @@ describe("Effects", function () {
   });
 
   describe(".list", function () {
-    it("has tests with support for extra options");
+    context("without numbering", function () {
+      it("turns input lines into an unordered list", function () {
+        sinon.stub(Elements.list_start, "val").returns("- ");
+        sinon.stub(Elements.number_list, "attr").withArgs("checked").returns(false);
+
+        expect(Effects.list("one\ntwo\nthree")).to.be("- one\n- two\n- three");
+
+        Elements.list_start.val.restore();
+        Elements.number_list.attr.restore();
+      });
+    });
+
+    context("with numbering", function () {
+      it("turns input lines into an ordered list", function () {
+        sinon.stub(Elements.list_start, "val").returns(". ");
+        sinon.stub(Elements.number_list, "attr").withArgs("checked").returns(true);
+
+        expect(Effects.list("one\ntwo\nthree")).to.be("1. one\n2. two\n3. three");
+
+        Elements.list_start.val.restore();
+        Elements.number_list.attr.restore();
+      });
+    });
   });
 
   describe(".remove_list", function () {

@@ -38,25 +38,19 @@ var Effects = {
   },
 
   list: function (input) {
-    var last_input, content_array, num, result, start_text;
-    if (Elements.number_list.attr("checked")) {
-      last_input = "";
-      content_array = input.split("\n");
-      num = 0;
-      content_array.forEach(function () { //act sequentially on all array items
-        num += 1;
-        last_input += num + Elements.list_start.val() + content_array.shift() + "\n";
-      });
-      result = last_input.slice(0, last_input.length - 1);
-    } else {
-      start_text = Elements.list_start.val();
-      result = Helpers.modifyAsList(input, function(list) {
+    var start_text = Elements.list_start.val();
+
+    return Helpers.modifyAsList(input, function (list) {
+      if (Elements.number_list.attr("checked")) {
+        return list.map(function (line, index) {
+          return "" + (index + 1) + start_text + line;
+        });
+      } else {
         return list.map(function (line) {
           return start_text + line;
         });
-      });
-    }
-    return result;
+      }
+    });
   },
 
   remove_list: function (input) {
