@@ -40,23 +40,23 @@ describe("Effects", function () {
   });
 
   describe(".find", function () {
-    it("has tests");
+    it("has tests with support for extra options");
   });
 
   describe(".replace", function () {
-    it("has tests");
+    it("has tests with support for extra options");
   });
 
   describe(".list", function () {
-    it("has tests");
+    it("has tests with support for extra options");
   });
 
   describe(".remove_list", function () {
-    it("has tests");
+    it("has tests with support for extra options");
   });
 
   describe(".repeat", function () {
-    it("has tests");
+    it("has tests with support for extra options");
   });
 
   describe(".wordcount", function () {
