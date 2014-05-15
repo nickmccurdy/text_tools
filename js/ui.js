@@ -22,7 +22,7 @@ function valueDown(variable) {
 
 //numbers only
 function numbersOnly(obj) {
-  obj.value = obj.value.replace(/\D/, "");
+  obj.value = obj.value.replace(/\D/g, "");
 }
 
 //USER INTERFACE
