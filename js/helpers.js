@@ -12,25 +12,11 @@ var Helpers = {
 
   //html upper/lower
   htmlCaseChanger: function (input, uppercase) {
-    var last_input = input,
-      content_array = [],
-      i,
-      bracket;
-    for (i = 1; i < input.split("<").length; i += 1) { //set the input into an array
-      if (last_input.indexOf("<") !== -1) {
-        bracket = "<";
-      }
-      if (last_input.indexOf(">") !== -1) {
-        bracket = ">";
-      }
-      content_array.push(last_input.substring(0, last_input.indexOf(bracket)) + bracket);
-      last_input = last_input.substring(last_input.indexOf(bracket) + 1);
-    }
-    content_array.push(last_input);
-    for (i = 1; i < content_array.length; i += 2) { //change the case of html
-      content_array[i] = content_array[i][uppercase ? "toUpperCase" : "toLowerCase"]();
-    }
-    return content_array.join(""); //set this value as blank when not bug testing
+    var caseFunction = uppercase ? "toUpperCase" : "toLowerCase",
+      htmlTag = /(<[^<>]*>)/g;
+    return input.replace(htmlTag, function (match) {
+      return match[caseFunction]();
+    });
   },
 
   /*
