@@ -18,7 +18,7 @@ var Panels = {
         Panels.hidden_elements.push(el);
       }
     });
-    Cookies.set("tt_hidden", Panels.hidden_elements.toString(), 365);
+    Cookies.set("tt_hidden", Panels.hidden_elements.toString());
     return Panels;
   },
 
