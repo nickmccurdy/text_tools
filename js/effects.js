@@ -4,6 +4,8 @@
 
 "use strict";
 
+var _s = _.string;
+
 var Effects = {
 
   normal: function (input) {
@@ -27,7 +29,7 @@ var Effects = {
   },
 
   titlecase: function (input) {
-    return _.string.titleize(input.toLowerCase());
+    return _s.titleize(input.toLowerCase());
   },
 
   find: function (input) {
@@ -59,7 +61,7 @@ var Effects = {
   },
 
   remove_list: function (input) {
-    var text_array = _.string.lines(input);
+    var text_array = _s.lines(input);
     text_array.forEach(function (value, i) {
       text_array[i] = value.substring(Elements.cutoff.val());
     });
@@ -67,14 +69,14 @@ var Effects = {
   },
 
   repeat: function (input) {
-    return _.string.repeat(input, parseInt(Elements.repetitions.text(), 10));
+    return _s.repeat(input, parseInt(Elements.repetitions.text(), 10));
   },
 
   wordcount: function (input) {
     var occurences = {
       chars: input.length,
-      lines: _.string.lines(input).length,
-      words: _.string.words(input).length
+      lines: _s.lines(input).length,
+      words: _s.words(input).length
     };
     return "Characters: " + occurences.chars + "\nWords: " + occurences.words + "\nLines: " + occurences.lines;
   },
@@ -113,7 +115,7 @@ var Effects = {
   },
 
   backwards: function (input) {
-    return _.string.reverse(input);
+    return _s.reverse(input);
   }
 
 };

@@ -4,12 +4,14 @@
 /*jslint nomen: true */
 /*global _ */
 
+var _s = _.string;
+
 "use strict";
 
 var Helpers = {
 
   modifyAsList: function (input, callback) {
-    return callback(_.string.lines(input)).join("\n");
+    return callback(_s.lines(input)).join("\n");
   },
 
   //html upper/lower
