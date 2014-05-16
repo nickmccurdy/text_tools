@@ -58,7 +58,7 @@ $(function () {
   //panel toggling
   Elements.panel_heading.click(function () {
     var to_toggle = $(this).attr("data-toggle"),
-      right_object = $(this).find(".pull-right");
+      right_object = $(this).find(".toggle-icon");
 
     $("#" + to_toggle).slideToggle();
 
