@@ -31,11 +31,4 @@ describe("Helpers", function () {
             .to.be("<strong>HELLO</strong>");
     });
   });
-
-  describe(".toTitleCase", function () {
-    it("converts a mostly lowercased string to title case", function () {
-      expect(Helpers.toTitleCase("the power of JavaScript"))
-            .to.be("The Power of JavaScript");
-    });
-  });
 });

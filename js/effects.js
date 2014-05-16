@@ -1,5 +1,6 @@
 /*jslint indent: 2 */
-/*global $, Elements, View, Helpers */
+/*jslint nomen: true */
+/*global $, _, Elements, View, Helpers */
 
 "use strict";
 
@@ -26,7 +27,7 @@ var Effects = {
   },
 
   titlecase: function (input) {
-    return Helpers.toTitleCase(input.toLowerCase());
+    return _.string.titleize(input.toLowerCase());
   },
 
   find: function (input) {
@@ -58,7 +59,7 @@ var Effects = {
   },
 
   remove_list: function (input) {
-    var text_array = input.split("\n");
+    var text_array = _.string.lines(input);
     text_array.forEach(function (value, i) {
       text_array[i] = value.substring(Elements.cutoff.val());
     });
@@ -66,16 +67,15 @@ var Effects = {
   },
 
   repeat: function (input) {
-    return new Array(parseInt(Elements.repetitions.text(), 10) + 1).join(input);
+    return _.string.repeat(input, parseInt(Elements.repetitions.text(), 10));
   },
 
   wordcount: function (input) {
-    var lines = input.split("\n").length,
-      occurences = {
-        chars: input.length,
-        lines: lines,
-        words: input === "" ? 0 : input.split(" ").length + lines - 1
-      };
+    var occurences = {
+      chars: input.length,
+      lines: _.string.lines(input).length,
+      words: _.string.words(input).length
+    };
     return "Characters: " + occurences.chars + "\nWords: " + occurences.words + "\nLines: " + occurences.lines;
   },
 
@@ -113,7 +113,7 @@ var Effects = {
   },
 
   backwards: function (input) {
-    return input.split("").reverse().join("");
+    return _.string.reverse(input);
   }
 
 };
