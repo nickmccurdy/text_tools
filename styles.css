@@ -38,8 +38,11 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.toggle-icon {
-  float: right;
+.panel-heading {
+  text-align: center;
+}
+.panel-heading .toggle-icon {
+  float: left;
 }
 
 /*specific elements*/
