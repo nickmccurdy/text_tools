@@ -62,12 +62,12 @@ $(function () {
 
     $("#" + to_toggle).slideToggle();
 
-    if (right_object.hasClass("glyphicon-plus-sign")) {
-      right_object.removeClass("glyphicon-plus-sign");
-      right_object.addClass("glyphicon-minus-sign");
-    } else if (right_object.hasClass("glyphicon-minus-sign")) {
-      right_object.removeClass("glyphicon-minus-sign");
-      right_object.addClass("glyphicon-plus-sign");
+    if (right_object.hasClass("glyphicon-chevron-down")) {
+      right_object.removeClass("glyphicon-chevron-down");
+      right_object.addClass("glyphicon-chevron-up");
+    } else if (right_object.hasClass("glyphicon-chevron-up")) {
+      right_object.removeClass("glyphicon-chevron-up");
+      right_object.addClass("glyphicon-chevron-down");
     }
 
     Panels.getHidden();
