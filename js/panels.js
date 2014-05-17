@@ -36,16 +36,9 @@ var Panels = {
 
   //collapse and expand all sections
   toggle: function (visible) {
-    var i,
-      panel;
-    for (i = 0; i < Panels.all_panels.length; i += 1) {
-      panel = $("#" + Panels.all_panels[i]);
-      if (visible) {
-        panel.show();
-      } else {
-        panel.hide();
-      }
-    }
+    Panels.all_panels.forEach(function (panel) {
+      $("#" + panel).toggle(visible);
+    });
     Panels.getHidden();
     return Panels;
   }
