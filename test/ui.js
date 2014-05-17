@@ -1,58 +1,45 @@
-describe("UI", function () {
-  var checkbox, numericInput, textInput;
+describe("$", function () {
+  var checkbox, numericInput, textInput, div;
 
   beforeEach(function () {
-    checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-
-    numericInput = document.createElement("input");
-    numericInput.type = "number";
-    numericInput.value = 5;
-
-    textInput = document.createElement("input");
-    textInput.value = "one 2 three 4 five";
+    checkbox = $('<input type="checkbox">');
+    numericInput = $('<input type="number" value="5">');
+    textInput = $('<input value="one 2 three 4 five">');
+    div = $(document.createElement("div"));
   });
 
-  describe(".toggleCheck", function () {
+  describe("#toggleCheck", function () {
     it("checks an unchecked element", function () {
-      UI.toggleCheck(checkbox);
+      checkbox.toggleCheck();
       expect(checkbox.checked).to.be(true);
     });
 
     it("unchecks an checked element", function () {
       checkbox.checked = true;
-      UI.toggleCheck(checkbox);
+      checkbox.toggleCheck();
       expect(checkbox.checked).to.be(false);
     });
   });
 
-  describe(".valueUp", function () {
+  describe("#valueUp", function () {
     it("increases the value of an element by 1", function () {
-      UI.valueUp(numericInput);
-      expect(numericInput.value).to.be("6");
+      numericInput.valueUp();
+      expect(numericInput.val()).to.be("6");
     });
   });
 
-  describe(".valueDown", function () {
+  describe("#valueDown", function () {
     it("decreases the value of an element by 1", function () {
-      UI.valueDown(numericInput);
-      expect(numericInput.value).to.be("4");
+      numericInput.valueDown();
+      expect(numericInput.val()).to.be("4");
     });
   });
 
-  describe(".numbersOnly", function () {
+  describe("#numbersOnly", function () {
     it("removes all non-numeric characters from an element's value", function () {
-      UI.numbersOnly(textInput);
-      expect(textInput.value).to.be("24");
+      textInput.numbersOnly();
+      expect(textInput.val()).to.be("24");
     });
-  });
-});
-
-describe("$", function () {
-  var div;
-
-  beforeEach(function () {
-    div = $(document.createElement("div"));
   });
 
   describe("#swapClasses", function () {
