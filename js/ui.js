@@ -108,7 +108,7 @@ $(function () {
   });
   Elements.regexp_toggle_label.click(function () {
     View.convertAll();
-    UI.toggleCheck(Elements.regexp_toggle);
+    Elements.regexp_toggle.toggleCheck();
   });
   Elements.regexp_toggle_label.focus(function () {
     if (View.effect !== 'replace') {
@@ -125,7 +125,8 @@ $(function () {
     Elements.list_effect.click();
   });
   Elements.number_list_label.click(function () {
-    UI.toggleCheck(Elements.number_list).toEffect('list').selectAll(Elements.list_start);
+    Elements.number_list.toggleCheck(Elements.number_list);
+    View.toEffect('list').selectAll(Elements.list_start);
     Elements.list_effect.click();
     View.convertAll();
   });
@@ -139,15 +140,15 @@ $(function () {
     }
   });
   Elements.cutoff.keyup(function () {
-    UI.numbersOnly(this);
+    this.numbersOnly();
   });
   Elements.cutoff_up.click(function () {
-    UI.valueUp(Elements.cutoff);
+    Elements.cutoff.valueUp();
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
   Elements.cutoff_down.click(function () {
-    UI.valueDown(Elements.cutoff);
+    Elements.cutoff.valueDown();
     View.toEffect('remove_list').selectAll(Elements.cutoff);
     Elements.remove_list_effect.click();
   });
@@ -161,15 +162,15 @@ $(function () {
     }
   });
   Elements.repetitions.keyup(function () {
-    UI.numbersOnly(this);
+    $(this).numbersOnly();
   });
   Elements.repetitions_up.click(function () {
-    UI.valueUp(Elements.repetitions);
+    Elements.repetitions.valueUp();
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });
   Elements.repetitions_down.click(function () {
-    UI.valueDown(Elements.repetitions);
+    Elements.repetitions.valueDown();
     View.toEffect('repeat').selectAll(Elements.repetitions);
     Elements.repeat_effect.click();
   });
