@@ -27,6 +27,14 @@ var UI = {
   }
 };
 
+$.fn.swapClasses = function (class1, class2) {
+  if (this.hasClass(class1) || this.hasClass(class2)) {
+    this.toggleClass(class1 + " " + class2);
+  } else {
+    this.addClass(class1);
+  }
+};
+
 //USER INTERFACE
 $(function () {
   //initialization
@@ -61,15 +69,7 @@ $(function () {
       right_object = $(this).find(".toggle-icon");
 
     $("#" + to_toggle).toggle();
-
-    if (right_object.hasClass("glyphicon-chevron-down")) {
-      right_object.removeClass("glyphicon-chevron-down");
-      right_object.addClass("glyphicon-chevron-up");
-    } else if (right_object.hasClass("glyphicon-chevron-up")) {
-      right_object.removeClass("glyphicon-chevron-up");
-      right_object.addClass("glyphicon-chevron-down");
-    }
-
+    right_object.swapClasses("glyphicon-chevron-down", "glyphicon-chevron-up");
     Panels.getHidden();
   });
 
