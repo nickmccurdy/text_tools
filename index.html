@@ -31,23 +31,18 @@
   </div>
 </div>
 
-<!--title bar-->
-<div class="row titlebar" id="titlebar">
-  <div class="col-md-5">Input</div>
-  <div class="col-md-2">Effects</div>
-  <div class="col-md-5">Output</div>
-</div>
-
 <!--main ui space-->
 <div class="row" id="mainui">
 
   <!--text before-->
   <div class="col-md-5" id="text_before_container">
+    <div class="titlebar">Input</div>
     <textarea class="main-field" id="text_before"></textarea>
   </div>
 
   <!--effects panels-->
   <div class="col-md-2" id="effects">
+    <div class="titlebar">Effects</div>
 
     <div class="list-group">
 
@@ -234,6 +229,7 @@
 
   <!--text after-->
   <div class="col-md-5" id="text_after_container">
+    <div class="titlebar">Output</div>
     <textarea class="main-field" id="text_after" readonly></textarea>
   </div>
 

@@ -35,7 +35,7 @@ var Elements = {
   replace_text: $("#replace_text"),
   text_after: $("#text_after"),
   text_before: $("#text_before"),
-  titlebar: $("#titlebar"),
+  titlebar: $(".titlebar"),
   toolbar: $("#toolbar"),
   toolbar_button: $("#toolbar_button"),
   toolbar_close: $("#toolbar_close"),
