@@ -60,7 +60,7 @@ $(function () {
     var to_toggle = $(this).attr("data-toggle"),
       right_object = $(this).find(".toggle-icon");
 
-    $("#" + to_toggle).slideToggle();
+    $("#" + to_toggle).toggle();
 
     if (right_object.hasClass("glyphicon-chevron-down")) {
       right_object.removeClass("glyphicon-chevron-down");
@@ -75,11 +75,11 @@ $(function () {
 
   //toolbar
   Elements.toolbar_button.click(function () {
-    Elements.toolbar.slideToggle();
+    Elements.toolbar.show();
     Panels.getHidden();
   });
   Elements.toolbar_close.click(function () {
-    Elements.toolbar.slideUp();
+    Elements.toolbar.hide();
     Panels.getHidden();
   });
   Elements.toolbar_collapse_button.click(function () {
