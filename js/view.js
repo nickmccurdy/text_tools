@@ -22,12 +22,6 @@ var View = {
     cutoff: undefined
   },
 
-  selectAll: function (field) {
-    field.focus();
-    field.select();
-    return View;
-  },
-
   outputToInput: function () {
     Elements.text_before.val(Elements.text_after.val());
     return View;
@@ -87,7 +81,7 @@ var View = {
 
       //output autoselect exclusion
       if (View.last.focused === Elements.text_after && !allow_auto_select) {
-        View.selectAll(Elements.text_after);
+        Elements.text_after.selectAll();
       }
 
       //console.log(watcherName+"watcher activated");

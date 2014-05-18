@@ -78,4 +78,8 @@ describe("$", function () {
       });
     });
   });
+
+  describe("#selectAll", function () {
+    it("has tests");
+  });
 });

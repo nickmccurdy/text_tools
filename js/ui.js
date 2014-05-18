@@ -32,6 +32,11 @@ $.fn.extend({
     } else {
       this.addClass(class1);
     }
+  },
+
+  selectAll: function () {
+    this.focus();
+    this.select();
   }
 });
 
@@ -50,7 +55,7 @@ $(function () {
   Elements.text_before.focus(View.updateFocus(Elements.text_before));
   Elements.text_after.focus(View.updateFocus(Elements.text_after));
   Elements.text_after.click(function () {
-    View.selectAll(Elements.text_after);
+    Elements.text_after.selectAll();
   });
   Elements.imgs_without_alts.attr("alt", "");
 
@@ -118,7 +123,7 @@ $(function () {
   });
   Elements.number_list.click(function () {
     View.convertAll();
-    View.selectAll(Elements.list_start);
+    Elements.list_start.selectAll();
   });
   Elements.number_list.focus(function () {
     View.toEffect('list');
@@ -126,12 +131,14 @@ $(function () {
   });
   Elements.number_list_label.click(function () {
     Elements.number_list.toggleCheck(Elements.number_list);
-    View.toEffect('list').selectAll(Elements.list_start);
+    View.toEffect('list');
+    Elements.list_start.selectAll();
     Elements.list_effect.click();
     View.convertAll();
   });
   Elements.cutoff.focus(function () {
-    View.toEffect('remove_list').selectAll(Elements.cutoff);
+    View.toEffect('remove_list');
+    Elements.cutoff.selectAll();
     Elements.remove_list_effect.click();
   });
   Elements.cutoff.blur(function () {
@@ -144,16 +151,19 @@ $(function () {
   });
   Elements.cutoff_up.click(function () {
     Elements.cutoff.valueUp();
-    View.toEffect('remove_list').selectAll(Elements.cutoff);
+    View.toEffect('remove_list');
+    Elements.cutoff.selectAll();
     Elements.remove_list_effect.click();
   });
   Elements.cutoff_down.click(function () {
     Elements.cutoff.valueDown();
-    View.toEffect('remove_list').selectAll(Elements.cutoff);
+    View.toEffect('remove_list');
+    Elements.cutoff.selectAll();
     Elements.remove_list_effect.click();
   });
   Elements.repetitions.focus(function () {
-    View.toEffect('repeat').selectAll(Elements.repetitions);
+    View.toEffect('repeat');
+    Elements.repetitions.selectAll();
     Elements.repeat_effect.click();
   });
   Elements.repetitions.blur(function () {
@@ -166,12 +176,14 @@ $(function () {
   });
   Elements.repetitions_up.click(function () {
     Elements.repetitions.valueUp();
-    View.toEffect('repeat').selectAll(Elements.repetitions);
+    View.toEffect('repeat');
+    Elements.repetitions.selectAll();
     Elements.repeat_effect.click();
   });
   Elements.repetitions_down.click(function () {
     Elements.repetitions.valueDown();
-    View.toEffect('repeat').selectAll(Elements.repetitions);
+    View.toEffect('repeat');
+    Elements.repetitions.selectAll();
     Elements.repeat_effect.click();
   });
 
@@ -186,16 +198,17 @@ $(function () {
     Elements.replace_effect.click();
   });
   Elements.list_effect.focus(function () {
-    View.selectAll(Elements.list_start);
+    Elements.list_start.selectAll();
   });
   Elements.list_start.focus(function () {
-    View.toEffect('list').selectAll(Elements.list_start);
+    View.toEffect('list');
+    Elements.list_start.selectAll();
     Elements.list_effect.click();
   });
   Elements.remove_list_effect.focus(function () {
-    View.selectAll(Elements.cutoff);
+    Elements.cutoff.selectAll();
   });
   Elements.repeat_effect.focus(function () {
-    View.selectAll(Elements.repetitions);
+    Elements.repetitions.selectAll();
   });
 });
