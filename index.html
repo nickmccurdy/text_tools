@@ -18,14 +18,19 @@
 <!--tool bar-->
 <div class="row toolbar" id="toolbar">
   <div class="col-md-12 form-inline">
-    <div class="form-group">
-      Sections: <span class="btn-group">
-        <button class="btn btn-default" id="toolbar_collapse_button"><span class="glyphicon glyphicon-chevron-up"></span> Collapse</button>
-        <button class="btn btn-default" id="toolbar_expand_button"><span class="glyphicon glyphicon-chevron-down"></span> Expand</button>
-      </span>
+    <div class="form-group btn-group">
+      <button class="btn btn-default" id="toolbar_collapse_button">
+        <span class="glyphicon glyphicon-chevron-up"></span> Collapse sections
+      </button>
+
+      <button class="btn btn-default" id="toolbar_expand_button">
+        <span class="glyphicon glyphicon-chevron-down"></span> Expand sections
+      </button>
     </div>
+
     <div class="form-group">
-      <label><input type="checkbox" checked id="toolbar_titlebar_toggle"> Top Bar</label>
+      <input type="checkbox" checked id="toolbar_titlebar_toggle">
+      <label for="toolbar_titlebar_toggle">Top Bar</label>
     </div>
 
     <button class="btn btn-default pull-right" id="toolbar_close">X</button>
