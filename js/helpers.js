@@ -1,9 +1,3 @@
-/*jslint indent: 2 */
-/*jslint node: true */
-/*jslint regexp: true */
-/*jslint nomen: true */
-/*global _ */
-
 "use strict";
 
 var _s = _.string;

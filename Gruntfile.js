@@ -4,7 +4,16 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jslint: {
-      src: "js/*.js"
+      build: {
+        src: "js/*.js",
+        directives: {
+          predef: ["$", "_"],
+          indent: 2,
+          node: true,
+          nomen: true,
+          regexp: true
+        }
+      }
     },
     csslint: {
       src: "*.css",
