@@ -10,10 +10,7 @@ module.exports = function (grunt) {
           $: false,
           _: false
         },
-        indent: 2,
-        node: true,
-        nomen: true,
-        regexp: true
+        globalstrict: true
       }
     },
     csslint: {
