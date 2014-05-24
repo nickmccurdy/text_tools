@@ -1,4 +1,5 @@
 /*jslint indent: 2 */
+/*jslint node: true */
 /*jslint nomen: true */
 /*global $, _, Elements, View, Helpers */
 

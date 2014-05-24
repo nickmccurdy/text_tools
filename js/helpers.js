@@ -4,9 +4,9 @@
 /*jslint nomen: true */
 /*global _ */
 
-var _s = _.string;
-
 "use strict";
+
+var _s = _.string;
 
 var Helpers = {
 
