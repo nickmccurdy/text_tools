@@ -1,14 +1,3 @@
-/*major ui*/
-body {
-  height: 100%;
-}
-#mainui {
-  height: 100%;
-}
-#mainui > div {
-  height:100% !important;
-}
-
 /*title bar*/
 .titlebar {
   font-size: 18px;
@@ -22,8 +11,8 @@ body {
   margin: 0;
   padding: 0;
   resize: none;
-  height: 100%;
   width: 100%;
+  /*height: 100%;*/
   height: 500px;
 }
 
@@ -35,22 +24,4 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-/*specific elements*/
-#find_counter {
-  font-weight: normal;
-}
-#regexp_toggle_label {
-  font-weight: normal;
-}
-#find_text, #replace_text, #list_start {
-  width: 100%;
-}
-#number_list_label {
-  font-weight: normal;
-  display: inline;
-}
-#cutoff, #repetitions {
-  width: 43%;
 }
