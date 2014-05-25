@@ -14,10 +14,7 @@ module.exports = function (grunt) {
       }
     },
     csslint: {
-      files: "*.css",
-      options: {
-        "adjoining-classes": false
-      }
+      files: "*.css"
     }
   });
 
