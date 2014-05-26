@@ -77,14 +77,6 @@ $(function () {
   });
 
   //toolbar
-  Elements.toolbar_button.click(function () {
-    Elements.toolbar.show();
-    Panels.getHidden();
-  });
-  Elements.toolbar_close.click(function () {
-    Elements.toolbar.hide();
-    Panels.getHidden();
-  });
   Elements.toolbar_collapse_button.click(function () {
     Panels.toggle(false);
   });

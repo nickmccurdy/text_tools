@@ -32,8 +32,6 @@ var Elements = {
   text_after: $("#text_after"),
   text_before: $("#text_before"),
   titlebar: $(".titlebar"),
-  toolbar_button: $("#toolbar_button"),
-  toolbar_close: $("#toolbar_close"),
   toolbar_collapse_button: $("#toolbar_collapse_button"),
   toolbar_expand_button: $("#toolbar_expand_button"),
   toolbar_titlebar_toggle: $("#toolbar_titlebar_toggle")
