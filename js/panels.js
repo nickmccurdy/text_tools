@@ -6,8 +6,8 @@
 var Panels = {
 
   all_panels: ["case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
-  all_elements: ["titlebar", "toolbar", "case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
-  hidden_elements: ["toolbar", "case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
+  all_elements: ["titlebar", "case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
+  hidden_elements: ["case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
 
   getHidden: function () {
     Panels.hidden_elements.length = 0;
