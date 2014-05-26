@@ -16,32 +16,28 @@
 <body>
 
 <!--tool bar-->
-<div class="row toolbar" id="toolbar">
-  <div class="col-md-12">
-    <div class="well well-sm form-inline">
-      <div class="form-group btn-group">
-        <button class="btn btn-default" id="toolbar_collapse_button">
-          <span class="glyphicon glyphicon-chevron-up"></span> Collapse sections
-        </button>
-
-        <button class="btn btn-default" id="toolbar_expand_button">
-          <span class="glyphicon glyphicon-chevron-down"></span> Expand sections
-        </button>
-      </div>
-
-      <button class="btn btn-default" id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
-        <span class="glyphicon glyphicon-arrow-left"></span> Save Effect
+<div class="toolbar" id="toolbar">
+  <div class="well well-sm">
+    <div class="btn-group">
+      <button class="btn btn-default" id="toolbar_collapse_button">
+        <span class="glyphicon glyphicon-chevron-up"></span> Collapse sections
       </button>
 
-      <button class="btn btn-default" id="clear" title="Clears all the input text and sets all effects to their defaults.">
-        <span class="glyphicon glyphicon-trash"></span> Clear
+      <button class="btn btn-default" id="toolbar_expand_button">
+        <span class="glyphicon glyphicon-chevron-down"></span> Expand sections
       </button>
-
-      <div class="form-group">
-        <input type="checkbox" checked id="toolbar_titlebar_toggle">
-        <label for="toolbar_titlebar_toggle">Top Bar</label>
-      </div>
     </div>
+
+    <button class="btn btn-default" id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
+      <span class="glyphicon glyphicon-arrow-left"></span> Save Effect
+    </button>
+
+    <button class="btn btn-default" id="clear" title="Clears all the input text and sets all effects to their defaults.">
+      <span class="glyphicon glyphicon-trash"></span> Clear
+    </button>
+
+    <input type="checkbox" checked id="toolbar_titlebar_toggle">
+    <label for="toolbar_titlebar_toggle">Top Bar</label>
   </div>
 </div>
 
