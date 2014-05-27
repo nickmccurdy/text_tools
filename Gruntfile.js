@@ -7,10 +7,10 @@ module.exports = function (grunt) {
       files: "js/*.js",
       options: {
         globals: {
-          $: false,
           _: false
         },
-        globalstrict: true
+        globalstrict: true,
+        jquery: true
       }
     },
     csslint: {
