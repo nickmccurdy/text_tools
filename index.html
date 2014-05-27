@@ -1,260 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <!-- more info -->
-  <title>Text Tools 2.0 dev</title>
-  <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=2, user-scalable=1">
-  <!-- css -->
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <!-- icons -->
-  <link rel="shortcut icon" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <!-- more info -->
+    <title>Text Tools 2.0 dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=2, user-scalable=1">
+    <!-- css -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- icons -->
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+  </head>
 
-<body>
+  <body>
 
-<!--tool bar-->
-<div class="well well-sm btn-toolbar">
-  <div class="btn-group">
-    <button class="btn btn-default" id="toolbar_collapse_button">
-      <span class="glyphicon glyphicon-chevron-up"></span> Collapse sections
-    </button>
+    <!--tool bar-->
+    <div class="well well-sm btn-toolbar">
+      <div class="btn-group">
+        <button class="btn btn-default" id="toolbar_collapse_button">
+          <span class="glyphicon glyphicon-chevron-up"></span> Collapse sections
+        </button>
 
-    <button class="btn btn-default" id="toolbar_expand_button">
-      <span class="glyphicon glyphicon-chevron-down"></span> Expand sections
-    </button>
-  </div>
+        <button class="btn btn-default" id="toolbar_expand_button">
+          <span class="glyphicon glyphicon-chevron-down"></span> Expand sections
+        </button>
+      </div>
 
-  <button class="btn btn-default" id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
-    <span class="glyphicon glyphicon-arrow-left"></span> Save Effect
-  </button>
+      <button class="btn btn-default" id="outputToInput" title="Sets the input text to whatever the output is currently displaying. Useful for using multiple effects on text.">
+        <span class="glyphicon glyphicon-arrow-left"></span> Save Effect
+      </button>
 
-  <button class="btn btn-default" id="clear" title="Clears all the input text and sets all effects to their defaults.">
-    <span class="glyphicon glyphicon-trash"></span> Clear
-  </button>
+      <button class="btn btn-default" id="clear" title="Clears all the input text and sets all effects to their defaults.">
+        <span class="glyphicon glyphicon-trash"></span> Clear
+      </button>
 
-  <input type="checkbox" checked id="toolbar_titlebar_toggle">
-  <label for="toolbar_titlebar_toggle">Top Bar</label>
-</div>
+      <input type="checkbox" checked id="toolbar_titlebar_toggle">
+      <label for="toolbar_titlebar_toggle">Top Bar</label>
+    </div>
 
-<!--main ui space-->
-<div class="row" id="mainui">
+    <!--main ui space-->
+    <div class="row" id="mainui">
 
-  <!--text before-->
-  <div class="col-md-5" id="text_before_container">
-    <div class="titlebar">Input</div>
-    <textarea class="main-field form-control" id="text_before"></textarea>
-  </div>
+      <!--text before-->
+      <div class="col-md-5" id="text_before_container">
+        <div class="titlebar">Input</div>
+        <textarea class="main-field form-control" id="text_before"></textarea>
+      </div>
 
-  <!--effects panels-->
-  <div class="col-md-2" id="effects">
-    <div class="titlebar">Effects</div>
+      <!--effects panels-->
+      <div class="col-md-2" id="effects">
+        <div class="titlebar">Effects</div>
 
-    <div class="list-group">
+        <div class="list-group">
 
-      <a class="list-group-item effect active" data-effect="normal">
-        <span class="glyphicon glyphicon-arrow-right"></span> Normal
-      </a>
+          <a class="list-group-item effect active" data-effect="normal">
+            <span class="glyphicon glyphicon-arrow-right"></span> Normal
+          </a>
+
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="case_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Case
+          </div>
+          <div class="list-group" id="case_panel">
+
+            <a class="list-group-item effect" data-effect="lowercase">
+              <span class="glyphicon glyphicon-arrow-down"></span> Lowercase
+            </a>
+
+            <a class="list-group-item effect" data-effect="uppercase">
+              <span class="glyphicon glyphicon-arrow-up"></span> Uppercase
+            </a>
+
+            <a class="list-group-item effect" data-effect="titlecase">
+              <span class="glyphicon glyphicon-header"></span> Title Case
+            </a>
+
+            <a class="list-group-item effect" data-effect="htmllower">
+              <span class="glyphicon glyphicon-arrow-down"></span> HTML Lower
+            </a>
+
+            <a class="list-group-item effect" data-effect="htmlupper">
+              <span class="glyphicon glyphicon-arrow-up"></span> HTML Upper
+            </a>
+
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="find_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Find/Replace
+          </div>
+          <div class="list-group" id="find_panel">
+
+            <a class="list-group-item effect" data-effect="find">
+              <span class="glyphicon glyphicon-search"></span> Find
+              <span id="find_counter"></span><br>
+
+              <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
+              <label id="regexp_toggle_label" for="regexp_toggle_label" title="Toggles regular expression search.">RegExp</label>
+
+              <textarea id="find_text" class="form-control" rows="2"></textarea>
+            </a>
+
+            <a class="list-group-item effect" data-effect="replace">
+              <span class="glyphicon glyphicon-pencil"></span> Replace
+
+              <textarea id="replace_text" class="form-control" rows="2"></textarea>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="sort_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Sort
+          </div>
+          <div class="list-group" id="sort_panel">
+
+            <a class="list-group-item effect" data-effect="sortaz">
+              <span class="glyphicon glyphicon-sort-by-alphabet"></span> Sort A-Z
+            </a>
+
+            <a class="list-group-item effect" data-effect="sortza">
+              <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Sort Z-A
+            </a>
+
+            <a class="list-group-item effect" data-effect="sortreverse">
+              <span class="glyphicon glyphicon-sort"></span> Sort Reverse
+            </a>
+
+            <a class="list-group-item effect" data-effect="sortrandom">
+              <span class="glyphicon glyphicon-random"></span> Sort Random
+            </a>
+
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="list_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Lists
+          </div>
+          <div class="list-group" id="list_panel">
+
+            <a class="list-group-item effect" data-effect="list">
+              <span class="glyphicon glyphicon-th-list"></span> List
+
+              <input type="checkbox" id="number_list">
+              <label for="number_list" id="number_list_label" title="Toggles numbered lists.">#</label>
+
+              <input type="text" class="form-control" id="list_start" value="- "><br>
+            </a>
+
+            <a class="list-group-item effect" data-effect="remove_list">
+              <span class="glyphicon glyphicon-minus"></span> List Remover
+
+              <input type="number" class="form-control" id="cutoff" value="3">
+            </a>
+
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="other_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Other
+          </div>
+          <div class="list-group" id="other_panel">
+
+            <a class="list-group-item effect" data-effect="repeat">
+              <span class="glyphicon glyphicon-repeat"></span> Repeat
+
+              <input type="number" class="form-control" id="repetitions" value="1">
+            </a>
+
+            <a class="list-group-item effect" data-effect="wordcount">
+              <span class="glyphicon glyphicon-check"></span> Word Count
+            </a>
+
+            <a class="list-group-item effect" data-effect="rot13">
+              <span class="glyphicon glyphicon-forward"></span> ROT13
+            </a>
+
+            <a class="list-group-item effect" data-effect="backwards">
+              <span class="glyphicon glyphicon-backward"></span> Backwards
+            </a>
+
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="help_panel">
+            <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
+            Help
+          </div>
+          <div class="list-group" id="help_panel">
+
+            <a class="list-group-item" id="about" href="#about_modal" data-toggle="modal">
+              <span class="glyphicon glyphicon-info-sign"></span> About
+            </a>
+
+            <a class="list-group-item" id="help" href="help.html" target="_blank">
+              <span class="glyphicon glyphicon-question-sign"></span> Help
+            </a>
+
+            <a class="list-group-item" id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
+              <span class="glyphicon glyphicon-envelope"></span> Feedback
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!--text after-->
+      <div class="col-md-5" id="text_after_container">
+        <div class="titlebar">Output</div>
+        <textarea class="main-field form-control" id="text_after" readonly></textarea>
+      </div>
 
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="case_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Case
+    <div class="modal fade hide" id="about_modal">
+      <div class="modal-header">
+        <h3>Text Tools <a class="close" data-dismiss="modal">&#195;&#8212;</a></h3>
       </div>
-      <div class="list-group" id="case_panel">
+      <div class="modal-body">
+        <p>
+          Version 2.0 dev<br>
+          The free text manipulation tool.<br>
+          <a href="changelog.txt" target="_blank">Changelog</a>
+        </p>
 
-        <a class="list-group-item effect" data-effect="lowercase">
-          <span class="glyphicon glyphicon-arrow-down"></span> Lowercase
-        </a>
-
-        <a class="list-group-item effect" data-effect="uppercase">
-          <span class="glyphicon glyphicon-arrow-up"></span> Uppercase
-        </a>
-
-        <a class="list-group-item effect" data-effect="titlecase">
-          <span class="glyphicon glyphicon-header"></span> Title Case
-        </a>
-
-        <a class="list-group-item effect" data-effect="htmllower">
-          <span class="glyphicon glyphicon-arrow-down"></span> HTML Lower
-        </a>
-
-        <a class="list-group-item effect" data-effect="htmlupper">
-          <span class="glyphicon glyphicon-arrow-up"></span> HTML Upper
-        </a>
-
+        <p>
+          Programmed and Designed by <a href="http://thenickperson.com" target="_blank">Nicolas McCurdy</a><br>
+          (extra script credits in source code)
+        </p>
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="find_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Find/Replace
-      </div>
-      <div class="list-group" id="find_panel">
-
-        <a class="list-group-item effect" data-effect="find">
-          <span class="glyphicon glyphicon-search"></span> Find
-          <span id="find_counter"></span><br>
-
-          <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
-          <label id="regexp_toggle_label" for="regexp_toggle_label" title="Toggles regular expression search.">RegExp</label>
-
-          <textarea id="find_text" class="form-control" rows="2"></textarea>
-        </a>
-
-        <a class="list-group-item effect" data-effect="replace">
-          <span class="glyphicon glyphicon-pencil"></span> Replace
-
-          <textarea id="replace_text" class="form-control" rows="2"></textarea>
-        </a>
-
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="sort_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Sort
-      </div>
-      <div class="list-group" id="sort_panel">
-
-        <a class="list-group-item effect" data-effect="sortaz">
-          <span class="glyphicon glyphicon-sort-by-alphabet"></span> Sort A-Z
-        </a>
-
-        <a class="list-group-item effect" data-effect="sortza">
-          <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Sort Z-A
-        </a>
-
-        <a class="list-group-item effect" data-effect="sortreverse">
-          <span class="glyphicon glyphicon-sort"></span> Sort Reverse
-        </a>
-
-        <a class="list-group-item effect" data-effect="sortrandom">
-          <span class="glyphicon glyphicon-random"></span> Sort Random
-        </a>
-
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="list_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Lists
-      </div>
-      <div class="list-group" id="list_panel">
-
-        <a class="list-group-item effect" data-effect="list">
-          <span class="glyphicon glyphicon-th-list"></span> List
-
-          <input type="checkbox" id="number_list">
-          <label for="number_list" id="number_list_label" title="Toggles numbered lists.">#</label>
-
-          <input type="text" class="form-control" id="list_start" value="- "><br>
-        </a>
-
-        <a class="list-group-item effect" data-effect="remove_list">
-          <span class="glyphicon glyphicon-minus"></span> List Remover
-
-          <input type="number" class="form-control" id="cutoff" value="3">
-        </a>
-
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="other_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Other
-      </div>
-      <div class="list-group" id="other_panel">
-
-        <a class="list-group-item effect" data-effect="repeat">
-          <span class="glyphicon glyphicon-repeat"></span> Repeat
-
-          <input type="number" class="form-control" id="repetitions" value="1">
-        </a>
-
-        <a class="list-group-item effect" data-effect="wordcount">
-          <span class="glyphicon glyphicon-check"></span> Word Count
-        </a>
-
-        <a class="list-group-item effect" data-effect="rot13">
-          <span class="glyphicon glyphicon-forward"></span> ROT13
-        </a>
-
-        <a class="list-group-item effect" data-effect="backwards">
-          <span class="glyphicon glyphicon-backward"></span> Backwards
-        </a>
-
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="help_panel">
-        <span class="glyphicon glyphicon-chevron-down toggle-icon"></span>
-        Help
-      </div>
-      <div class="list-group" id="help_panel">
-
-        <a class="list-group-item" id="about" href="#about_modal" data-toggle="modal">
-          <span class="glyphicon glyphicon-info-sign"></span> About
-        </a>
-
-        <a class="list-group-item" id="help" href="help.html" target="_blank">
-          <span class="glyphicon glyphicon-question-sign"></span> Help
-        </a>
-
-        <a class="list-group-item" id="email" href="http://scr.im/nicolasm" target="_blank" class="info">
-          <span class="glyphicon glyphicon-envelope"></span> Feedback
-        </a>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!--text after-->
-  <div class="col-md-5" id="text_after_container">
-    <div class="titlebar">Output</div>
-    <textarea class="main-field form-control" id="text_after" readonly></textarea>
-  </div>
-
-</div>
-
-<div class="modal fade hide" id="about_modal">
-  <div class="modal-header">
-    <h3>Text Tools <a class="close" data-dismiss="modal">&#195;&#8212;</a></h3>
-  </div>
-  <div class="modal-body">
-    <p>
-      Version 2.0 dev<br>
-      The free text manipulation tool.<br>
-      <a href="changelog.txt" target="_blank">Changelog</a>
-    </p>
-
-    <p>
-      Programmed and Designed by <a href="http://thenickperson.com" target="_blank">Nicolas McCurdy</a><br>
-      (extra script credits in source code)
-    </p>
-  </div>
-</div>
-
-<!-- scripts -->
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
-<script src="js/panels.js"></script>
-<script src="js/view.js"></script>
-<script src="js/elements.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/helpers.js"></script>
-<script src="js/effects.js"></script>
-</body>
+    <!-- scripts -->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Cookies.js/0.4.0/cookies.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
+    <script src="js/panels.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/elements.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/effects.js"></script>
+  </body>
 </html>
