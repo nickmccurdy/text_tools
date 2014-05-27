@@ -139,18 +139,6 @@ $(function () {
   Elements.cutoff.keyup(function () {
     this.numbersOnly();
   });
-  Elements.cutoff_up.click(function () {
-    Elements.cutoff.valueUp();
-    View.toEffect('remove_list');
-    Elements.cutoff.selectAll();
-    Elements.remove_list_effect.click();
-  });
-  Elements.cutoff_down.click(function () {
-    Elements.cutoff.valueDown();
-    View.toEffect('remove_list');
-    Elements.cutoff.selectAll();
-    Elements.remove_list_effect.click();
-  });
   Elements.repetitions.focus(function () {
     View.toEffect('repeat');
     Elements.repetitions.selectAll();
@@ -163,18 +151,6 @@ $(function () {
   });
   Elements.repetitions.keyup(function () {
     $(this).numbersOnly();
-  });
-  Elements.repetitions_up.click(function () {
-    Elements.repetitions.valueUp();
-    View.toEffect('repeat');
-    Elements.repetitions.selectAll();
-    Elements.repeat_effect.click();
-  });
-  Elements.repetitions_down.click(function () {
-    Elements.repetitions.valueDown();
-    View.toEffect('repeat');
-    Elements.repetitions.selectAll();
-    Elements.repeat_effect.click();
   });
 
   Elements.find_text.focus(function () {
