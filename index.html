@@ -47,7 +47,7 @@
   <!--text before-->
   <div class="col-md-5" id="text_before_container">
     <div class="titlebar">Input</div>
-    <textarea class="main-field" id="text_before"></textarea>
+    <textarea class="main-field form-control" id="text_before"></textarea>
   </div>
 
   <!--effects panels-->
@@ -104,15 +104,15 @@
           <span id="find_counter"></span><br>
 
           <input type="checkbox" id="regexp_toggle" title="Toggles regular expression search.">
-          <span id="regexp_toggle_label" title="Toggles regular expression search.">RegExp</span>
+          <label id="regexp_toggle_label" for="regexp_toggle_label" title="Toggles regular expression search.">RegExp</label>
 
-          <textarea id="find_text" rows="2"></textarea>
+          <textarea id="find_text" class="form-control" rows="2"></textarea>
         </a>
 
         <a class="list-group-item effect" data-effect="replace">
           <span class="glyphicon glyphicon-pencil"></span> Replace
 
-          <textarea id="replace_text" rows="2"></textarea>
+          <textarea id="replace_text" class="form-control" rows="2"></textarea>
         </a>
 
       </div>
@@ -155,15 +155,15 @@
           <span class="glyphicon glyphicon-th-list"></span> List
 
           <input type="checkbox" id="number_list">
-          <span id="number_list_label" title="Toggles numbered lists.">#</span>
+          <label for="number_list" id="number_list_label" title="Toggles numbered lists.">#</label>
 
-          <input type="text" id="list_start" value="- "><br>
+          <input type="text" class="form-control" id="list_start" value="- "><br>
         </a>
 
         <a class="list-group-item effect" data-effect="remove_list">
           <span class="glyphicon glyphicon-minus"></span> List Remover
 
-          <input type="number" id="cutoff" value="3">
+          <input type="number" class="form-control" id="cutoff" value="3">
         </a>
 
       </div>
@@ -179,7 +179,7 @@
         <a class="list-group-item effect" data-effect="repeat">
           <span class="glyphicon glyphicon-repeat"></span> Repeat
 
-          <input type="number" id="repetitions" value="1">
+          <input type="number" class="form-control" id="repetitions" value="1">
         </a>
 
         <a class="list-group-item effect" data-effect="wordcount">
@@ -224,7 +224,7 @@
   <!--text after-->
   <div class="col-md-5" id="text_after_container">
     <div class="titlebar">Output</div>
-    <textarea class="main-field" id="text_after" readonly></textarea>
+    <textarea class="main-field form-control" id="text_after" readonly></textarea>
   </div>
 
 </div>
