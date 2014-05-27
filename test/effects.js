@@ -28,14 +28,14 @@ describe("Effects", function () {
   describe(".htmllower", function () {
     it("lowercases a <STRONG> tag", function () {
       expect(Effects.htmllower("<STRONG>HELLO</STRONG>"))
-            .to.be("<strong>HELLO</strong>");
+        .to.be("<strong>HELLO</strong>");
     });
   });
 
   describe(".htmlupper", function () {
     it("uppercases a <strong> tag", function () {
       expect(Effects.htmlupper("<strong>hello</strong>"))
-            .to.be("<STRONG>hello</STRONG>");
+        .to.be("<STRONG>hello</STRONG>");
     });
   });
 
@@ -110,7 +110,7 @@ describe("Effects", function () {
   describe(".wordcount", function () {
     it("counts the characters, words, and lines in a string", function () {
       expect(Effects.wordcount("one two\nthree"))
-            .to.be("Characters: 13\nWords: 3\nLines: 2");
+      .to.be("Characters: 13\nWords: 3\nLines: 2");
     });
   });
 
@@ -143,7 +143,7 @@ describe("Effects", function () {
         "c\nb\na"
       ];
       expect(Effects.sortrandom("b\na\nc"))
-            .to.match(new RegExp(possibleResults.join("|")));
+        .to.match(new RegExp(possibleResults.join("|")));
     });
   });
 

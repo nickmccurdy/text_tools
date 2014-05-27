@@ -9,7 +9,7 @@ describe("Helpers", function () {
         });
       };
       expect(Helpers.modifyAsList("one\ntwo\nthree", callback))
-            .to.be("- one\n- two\n- three");
+        .to.be("- one\n- two\n- three");
     });
 
     it("sorts lines in a string", function () {
@@ -23,12 +23,12 @@ describe("Helpers", function () {
   describe(".htmlCaseChanger", function () {
     it("uppercases a <strong> tag", function () {
       expect(Helpers.htmlCaseChanger("<strong>hello</strong>", true))
-            .to.be("<STRONG>hello</STRONG>");
+        .to.be("<STRONG>hello</STRONG>");
     });
 
     it("lowercases a <STRONG> tag", function () {
       expect(Helpers.htmlCaseChanger("<STRONG>HELLO</STRONG>", false))
-            .to.be("<strong>HELLO</strong>");
+        .to.be("<strong>HELLO</strong>");
     });
   });
 });
