@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 
           // libraries
           _: false,
+          Backbone: false,
           Cookies: false,
 
           // mocha
