@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Effects", function () {
   var shortInput = "Hello world";
 

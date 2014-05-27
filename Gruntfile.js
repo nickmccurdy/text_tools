@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jshint: {
-      files: "js/*.js",
+      files: ["js/*.js", "test/*.js", "!test/mocha.js"],
       options: {
         globals: {
           Effects: true,
@@ -15,8 +15,22 @@ module.exports = function (grunt) {
 
           // libraries
           _: false,
-          Cookies: false
+          Cookies: false,
+
+          // mocha
+          describe: false,
+          context: false,
+          it: false,
+          before: false,
+          beforeEach: false,
+          after: false,
+          afterEach: false,
+
+          // other test libraries
+          expect: false,
+          sinon: false
         },
+        browser: true,
         globalstrict: true,
         jquery: true
       }

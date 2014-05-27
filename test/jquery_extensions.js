@@ -1,3 +1,5 @@
+"use strict";
+
 describe("$", function () {
   var checkbox, numericInput, textInput, div;
 
