@@ -31,20 +31,20 @@ var Effects = {
   },
 
   find: function (input) {
-    return input.replace(View.getQuery(), Elements.find_text.val().toUpperCase());
+    return input.replace(View.getQuery(), Elements.$find_text.val().toUpperCase());
   },
 
   replace: function (input) {
-    return input.replace(View.getQuery(), Elements.replace_text.val());
+    return input.replace(View.getQuery(), Elements.$replace_text.val());
   },
 
   list: function (input) {
-    var start_text = Elements.list_start.val();
+    var start_text = Elements.$list_start.val();
 
     return Helpers.modifyAsList(input, function (list) {
       var newList;
 
-      if (Elements.number_list.attr("checked")) {
+      if (Elements.$number_list.attr("checked")) {
         newList = list.map(function (line, index) {
           return (index + 1).toString() + start_text + line;
         });
@@ -61,13 +61,13 @@ var Effects = {
   remove_list: function (input) {
     var text_array = _s.lines(input);
     text_array.forEach(function (value, i) {
-      text_array[i] = value.substring(Elements.cutoff.val());
+      text_array[i] = value.substring(Elements.$cutoff.val());
     });
     return text_array.join("\n");
   },
 
   repeat: function (input) {
-    return _s.repeat(input, parseInt(Elements.repetitions.text(), 10));
+    return _s.repeat(input, parseInt(Elements.$repetitions.text(), 10));
   },
 
   wordcount: function (input) {
