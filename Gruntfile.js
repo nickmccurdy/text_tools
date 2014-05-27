@@ -7,7 +7,15 @@ module.exports = function (grunt) {
       files: "js/*.js",
       options: {
         globals: {
-          _: false
+          Effects: true,
+          Elements: true,
+          Helpers: true,
+          Panels: true,
+          View: true,
+
+          // libraries
+          _: false,
+          Cookies: false
         },
         globalstrict: true,
         jquery: true

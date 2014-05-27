@@ -1,5 +1,3 @@
-/*global Effects, Elements, Panels */
-
 "use strict";
 
 var View = {

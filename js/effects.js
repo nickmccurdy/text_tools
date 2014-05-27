@@ -1,5 +1,3 @@
-/*global Elements, View, Helpers */
-
 "use strict";
 
 var _s = _.string;

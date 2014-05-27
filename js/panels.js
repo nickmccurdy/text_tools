@@ -1,5 +1,3 @@
-/*global Cookies */
-
 "use strict";
 
 //main variables
