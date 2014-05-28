@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _s = _.string;
 
@@ -42,7 +42,7 @@ var Effects = {
     return Helpers.modifyAsList(input, function (list) {
       var newList;
 
-      if (Elements.$number_list.attr("checked")) {
+      if (Elements.$number_list.attr('checked')) {
         newList = list.map(function (line, index) {
           return (index + 1).toString() + start_text + line;
         });
@@ -61,7 +61,7 @@ var Effects = {
     text_array.forEach(function (value, i) {
       text_array[i] = value.substring(Elements.$cutoff.val());
     });
-    return text_array.join("\n");
+    return text_array.join('\n');
   },
 
   repeat: function (input) {
@@ -74,7 +74,7 @@ var Effects = {
       lines: _s.lines(input).length,
       words: _s.words(input).length
     };
-    return "Characters: " + occurences.chars + "\nWords: " + occurences.words + "\nLines: " + occurences.lines;
+    return 'Characters: ' + occurences.chars + '\nWords: ' + occurences.words + '\nLines: ' + occurences.lines;
   },
 
   sortaz: function (input) {
@@ -106,7 +106,7 @@ var Effects = {
   // Borrowed from http://phpjs.org/functions/str_rot13/
   rot13: function (input) {
     return input.replace(/[a-z]/gi, function (s) {
-      return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < "n" ? 13 : -13));
+      return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13));
     });
   },
 

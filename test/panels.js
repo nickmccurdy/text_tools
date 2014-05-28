@@ -1,5 +1,5 @@
-"use strict";
+'use strict';
 
-describe("Panels", function () {
-  it("has tests");
+describe('Panels', function () {
+  it('has tests');
 });

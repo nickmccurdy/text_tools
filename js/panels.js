@@ -1,31 +1,31 @@
-"use strict";
+'use strict';
 
 //main variables
 var Panels = {
 
-  all_panels: ["case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
-  all_elements: ["titlebar", "case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
-  hidden_elements: ["case_panel", "find_panel", "sort_panel", "list_panel", "other_panel", "help_panel"],
+  all_panels: ['case_panel', 'find_panel', 'sort_panel', 'list_panel', 'other_panel', 'help_panel'],
+  all_elements: ['titlebar', 'case_panel', 'find_panel', 'sort_panel', 'list_panel', 'other_panel', 'help_panel'],
+  hidden_elements: ['case_panel', 'find_panel', 'sort_panel', 'list_panel', 'other_panel', 'help_panel'],
 
   getHidden: function () {
     Panels.hidden_elements.length = 0;
     Panels.all_elements.forEach(function (el) {
-      if ($("#" + el).is(":hidden")) {
+      if ($('#' + el).is(':hidden')) {
         Panels.hidden_elements.push(el);
       }
     });
-    Cookies.set("tt_hidden", Panels.hidden_elements.toString());
+    Cookies.set('tt_hidden', Panels.hidden_elements.toString());
     return Panels;
   },
 
   //collapse and expand all sections
   init: function () {
-    var hidden_elements_cookie = Cookies.get("tt_hidden");
+    var hidden_elements_cookie = Cookies.get('tt_hidden');
     if (hidden_elements_cookie) {
-      Panels.hidden_elements = hidden_elements_cookie.split(",");
+      Panels.hidden_elements = hidden_elements_cookie.split(',');
     }
     Panels.hidden_elements.forEach(function (value) {
-      $("#" + value).hide();
+      $('#' + value).hide();
     });
     return Panels;
   },
@@ -33,7 +33,7 @@ var Panels = {
   //collapse and expand all sections
   toggle: function (visible) {
     Panels.all_panels.forEach(function (panel) {
-      $("#" + panel).toggle(visible);
+      $('#' + panel).toggle(visible);
     });
     Panels.getHidden();
     return Panels;

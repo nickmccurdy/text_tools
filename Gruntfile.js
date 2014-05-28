@@ -1,10 +1,10 @@
 module.exports = function (grunt) {
-  grunt.loadNpmTasks("grunt-contrib-csslint");
-  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.initConfig({
     jshint: {
-      files: ["js/*.js", "test/*.js", "!test/mocha.js"],
+      files: ['js/*.js', 'test/*.js', '!test/mocha.js'],
       options: {
         globals: {
           Effects: true,
@@ -32,13 +32,14 @@ module.exports = function (grunt) {
         },
         browser: true,
         globalstrict: true,
-        jquery: true
+        jquery: true,
+        quotmark: 'single'
       }
     },
     csslint: {
-      files: "*.css"
+      files: '*.css'
     }
   });
 
-  grunt.registerTask("default", ["jshint", "csslint"]);
+  grunt.registerTask('default', ['jshint', 'csslint']);
 };

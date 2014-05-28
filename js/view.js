@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 var View = {
 
-  effect: "normal", //change this to a different effect to bug test it on startup
+  effect: 'normal', //change this to a different effect to bug test it on startup
 
   last: {
     focused: [],
@@ -30,14 +30,14 @@ var View = {
   },
 
   clear: function () {
-    Elements.$text_before.val("");
-    Elements.$text_after.val("");
-    Elements.$find_text.val("");
-    Elements.$replace_text.val("");
-    Elements.$list_start.val("- ");
-    Elements.$cutoff.val("3");
-    Elements.$repetitions.val("1");
-    Elements.$number_list.attr("checked", false);
+    Elements.$text_before.val('');
+    Elements.$text_after.val('');
+    Elements.$find_text.val('');
+    Elements.$replace_text.val('');
+    Elements.$list_start.val('- ');
+    Elements.$cutoff.val('3');
+    Elements.$repetitions.val('1');
+    Elements.$number_list.attr('checked', false);
     return View;
   },
 
@@ -53,8 +53,8 @@ var View = {
 
   getQuery: function () {
     var query = Elements.$find_text.val();
-    if (Elements.$regexp_toggle.attr("checked", true)) {
-      query = new RegExp(query, "gi");
+    if (Elements.$regexp_toggle.attr('checked', true)) {
+      query = new RegExp(query, 'gi');
     }
     return query;
   },
@@ -65,12 +65,12 @@ var View = {
 
       var input = Elements.$text_before.val(),
         output = Effects[View.effect](input),
-        allow_auto_select = ["find", "replace", "list", "remove_list", "repeat"].indexOf(View.effect) === -1;
+        allow_auto_select = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
 
-      if (Elements.$find_text.val() !== "") {
-        Elements.$counts_find.html(" (" + input.split(View.getQuery()).length - 1 + ")");
+      if (Elements.$find_text.val() !== '') {
+        Elements.$counts_find.html(' (' + input.split(View.getQuery()).length - 1 + ')');
       } else {
-        Elements.$counts_find.html("");
+        Elements.$counts_find.html('');
       }
 
       Elements.$text_after.val(output);
@@ -80,7 +80,7 @@ var View = {
         Elements.$text_after.selectAll();
       }
 
-      //console.log(watcherName+"watcher activated");
+      //console.log(watcherName+'watcher activated');
     }
     return View;
   },
@@ -88,9 +88,9 @@ var View = {
   convertAll: function () { //input watcher
     if (View.watched.input !== Elements.$text_before) {
       View.convert();
-      //console.log("main watcher activated");
+      //console.log('main watcher activated');
     }
-    View.convert(View.watched.find, Elements.$find_text, "find").convert(View.watched.replace, Elements.$replace_text, "replace").convert(View.watched.list_start, Elements.$list_start, "list_start").convert(View.watched.repetitions, Elements.$repetitions, "repetitions").convert(View.watched.cutoff, Elements.$cutoff, "cutoff"); //buggy
+    View.convert(View.watched.find, Elements.$find_text, 'find').convert(View.watched.replace, Elements.$replace_text, 'replace').convert(View.watched.list_start, Elements.$list_start, 'list_start').convert(View.watched.repetitions, Elements.$repetitions, 'repetitions').convert(View.watched.cutoff, Elements.$cutoff, 'cutoff'); //buggy
   }
 
 };
@@ -105,31 +105,31 @@ $(function () {
   View.convertAll();
 
   //start daemon scripts
-  Elements.$body.bind("change keydown keyup paste cut", View.convertAll);
+  Elements.$body.bind('change keydown keyup paste cut', View.convertAll);
   Elements.$a.focus(View.regainFocus());
   Elements.$text_before.focus(View.updateFocus(Elements.$text_before));
   Elements.$text_after.focus(View.updateFocus(Elements.$text_after));
   Elements.$text_after.click(function () {
     Elements.$text_after.selectAll();
   });
-  Elements.$imgs_without_alts.attr("alt", "");
+  Elements.$imgs_without_alts.attr('alt', '');
 
   //effect switching
   Elements.$effects.click(function () {
-    var new_effect = $(this).attr("data-effect");
+    var new_effect = $(this).attr('data-effect');
     View.toEffect(new_effect);
-    Elements.$effects.removeClass("active");
-    $(this).addClass("active");
+    Elements.$effects.removeClass('active');
+    $(this).addClass('active');
     View.convertAll();
   });
 
   //panel toggling
   Elements.$panel_heading.click(function () {
-    var to_toggle = $(this).attr("data-toggle"),
-      right_object = $(this).find(".toggle-icon");
+    var to_toggle = $(this).attr('data-toggle'),
+      right_object = $(this).find('.toggle-icon');
 
-    $("#" + to_toggle).toggle();
-    right_object.swapClasses("glyphicon-chevron-down", "glyphicon-chevron-up");
+    $('#' + to_toggle).toggle();
+    right_object.swapClasses('glyphicon-chevron-down', 'glyphicon-chevron-up');
     Panels.getHidden();
   });
 
