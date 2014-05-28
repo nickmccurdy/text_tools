@@ -20,7 +20,7 @@ var View = {
   // useful for "saving" effects so that multiple can be chained together.
   // Chainable.
   outputToInput: function () {
-    Elements.$text_before.val(Elements.$text_after.val());
+    Elements.$textBefore.val(Elements.$textAfter.val());
     return View;
   },
 
@@ -33,14 +33,14 @@ var View = {
 
   // Resets all input fields to the default values. Chainable.
   clear: function () {
-    Elements.$text_before.val('');
-    Elements.$text_after.val('');
-    Elements.$find_text.val('');
-    Elements.$replace_text.val('');
-    Elements.$list_start.val('- ');
+    Elements.$textBefore.val('');
+    Elements.$textAfter.val('');
+    Elements.$findText.val('');
+    Elements.$replaceText.val('');
+    Elements.$listStart.val('- ');
     Elements.$cutoff.val('3');
     Elements.$repetitions.val('1');
-    Elements.$number_list.attr('checked', false);
+    Elements.$numberList.attr('checked', false);
     return View;
   },
 
@@ -62,8 +62,8 @@ var View = {
   // RegExp is given by the user, that is used. Otherwise, the String input is
   // converted to a case-insensitive RegExp.
   getQuery: function () {
-    var query = Elements.$find_text.val();
-    if (Elements.$regexp_toggle.attr('checked', true)) {
+    var query = Elements.$findText.val();
+    if (Elements.$regexpToggle.attr('checked', true)) {
       // Replace the String with a RegExp to make it case-insensitive.
       query = new RegExp(query, 'gi');
     }
@@ -73,23 +73,23 @@ var View = {
   // Triggers a conversion of the current input to a new output, based on the
   // current effect and options. Chainable.
   convert: function () {
-    var input = Elements.$text_before.val(),
+    var input = Elements.$textBefore.val(),
       output = Effects[View.effect](input),
-      allow_auto_select = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
+      allowAutoSelect = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
 
     // Update the counter for the Find effect.
-    if (Elements.$find_text.val() !== '') {
-      Elements.$counts_find.html(' (' + input.split(View.getQuery()).length - 1 + ')');
+    if (Elements.$findText.val() !== '') {
+      Elements.$countsFind.html(' (' + input.split(View.getQuery()).length - 1 + ')');
     } else {
-      Elements.$counts_find.html('');
+      Elements.$countsFind.html('');
     }
 
     // Update the output field.
-    Elements.$text_after.val(output);
+    Elements.$textAfter.val(output);
 
     // Output autoselect exclusion.
-    if (View.last.focused === Elements.$text_after && !allow_auto_select) {
-      Elements.$text_after.selectAll();
+    if (View.last.focused === Elements.$textAfter && !allowAutoSelect) {
+      Elements.$textAfter.selectAll();
     }
 
     //console.log(watcherName+'watcher activated');
@@ -102,49 +102,49 @@ var View = {
 // Startup scripts for Text Tools, mostly involving event binding.
 $(function () {
   // Initialization
-  View.updateFocus(Elements.$text_before);
-  Elements.$normal_effect.click();
+  View.updateFocus(Elements.$textBefore);
+  Elements.$normalEffect.click();
   Panels.init();
-  Elements.$text_before.focus();
+  Elements.$textBefore.focus();
   View.convert();
 
   // Start daemon scripts
   Elements.$body.bind('change keydown keyup paste cut', View.convert);
   Elements.$a.focus(View.regainFocus());
-  Elements.$text_before.focus(View.updateFocus(Elements.$text_before));
-  Elements.$text_after.focus(View.updateFocus(Elements.$text_after));
-  Elements.$text_after.click(function () {
-    Elements.$text_after.selectAll();
+  Elements.$textBefore.focus(View.updateFocus(Elements.$textBefore));
+  Elements.$textAfter.focus(View.updateFocus(Elements.$textAfter));
+  Elements.$textAfter.click(function () {
+    Elements.$textAfter.selectAll();
   });
-  Elements.$imgs_without_alts.attr('alt', '');
+  Elements.$imgsWithoutAlts.attr('alt', '');
 
   // Effect switching
   Elements.$effects.click(function () {
-    var new_effect = $(this).attr('data-effect');
-    View.toEffect(new_effect);
+    var newEffect = $(this).attr('data-effect');
+    View.toEffect(newEffect);
     Elements.$effects.removeClass('active');
     $(this).addClass('active');
     View.convert();
   });
 
   // Panel toggling
-  Elements.$panel_heading.click(function () {
-    var to_toggle = $(this).attr('data-toggle'),
-      right_object = $(this).find('.toggle-icon');
+  Elements.$panelHeading.click(function () {
+    var toToggle = $(this).attr('data-toggle'),
+      rightObject = $(this).find('.toggle-icon');
 
-    $('#' + to_toggle).toggle();
-    right_object.swapClasses('glyphicon-chevron-down', 'glyphicon-chevron-up');
+    $('#' + toToggle).toggle();
+    rightObject.swapClasses('glyphicon-chevron-down', 'glyphicon-chevron-up');
     Panels.getHidden();
   });
 
   // Toolbar
-  Elements.$toolbar_collapse_button.click(function () {
+  Elements.$toolbarCollapseButton.click(function () {
     Panels.toggle(false);
   });
-  Elements.$toolbar_expand_button.click(function () {
+  Elements.$toolbarExpandButton.click(function () {
     Panels.toggle(true);
   });
-  Elements.$toolbar_titlebar_toggle.click(function () {
+  Elements.$toolbarTitlebarToggle.click(function () {
     Elements.$titlebar.toggle();
     Panels.getHidden();
   });
@@ -152,45 +152,45 @@ $(function () {
   // More click events
   Elements.$outputToInput.click(View.outputToInput);
   Elements.$clear.click(View.clear);
-  Elements.$clear.focus(Elements.$text_before.focus);
-  Elements.$find_effect.click(Elements.$find_text.focus);
-  Elements.$replace_effect.click(Elements.$replace_text.focus);
-  Elements.$regexp_toggle.click(View.convert);
-  Elements.$regexp_toggle.focus(function () {
+  Elements.$clear.focus(Elements.$textBefore.focus);
+  Elements.$findEffect.click(Elements.$findText.focus);
+  Elements.$replaceEffect.click(Elements.$replaceText.focus);
+  Elements.$regexpToggle.click(View.convert);
+  Elements.$regexpToggle.focus(function () {
     if (View.effect !== 'replace') {
       View.toEffect('find');
-      Elements.$find_effect.click();
+      Elements.$findEffect.click();
     }
   });
-  Elements.$regexp_toggle_label.click(function () {
+  Elements.$regexpToggleLabel.click(function () {
     View.convert();
-    Elements.$regexp_toggle.toggleCheck();
+    Elements.$regexpToggle.toggleCheck();
   });
-  Elements.$regexp_toggle_label.focus(function () {
+  Elements.$regexpToggleLabel.focus(function () {
     if (View.effect !== 'replace') {
       View.toEffect('find');
     }
-    Elements.$find_effect.click();
+    Elements.$findEffect.click();
   });
-  Elements.$number_list.click(function () {
+  Elements.$numberList.click(function () {
     View.convert();
-    Elements.$list_start.selectAll();
+    Elements.$listStart.selectAll();
   });
-  Elements.$number_list.focus(function () {
+  Elements.$numberList.focus(function () {
     View.toEffect('list');
-    Elements.$list_effect.click();
+    Elements.$listEffect.click();
   });
-  Elements.$number_list_label.click(function () {
-    Elements.$number_list.toggleCheck(Elements.$number_list);
+  Elements.$numberListLabel.click(function () {
+    Elements.$numberList.toggleCheck(Elements.$numberList);
     View.toEffect('list');
-    Elements.$list_start.selectAll();
-    Elements.$list_effect.click();
+    Elements.$listStart.selectAll();
+    Elements.$listEffect.click();
     View.convert();
   });
   Elements.$cutoff.focus(function () {
     View.toEffect('remove_list');
     Elements.$cutoff.selectAll();
-    Elements.$remove_list_effect.click();
+    Elements.$removeListEffect.click();
   });
   Elements.$cutoff.blur(function () {
     if (Elements.$cutoff.val() === '') {
@@ -203,7 +203,7 @@ $(function () {
   Elements.$repetitions.focus(function () {
     View.toEffect('repeat');
     Elements.$repetitions.selectAll();
-    Elements.$repeat_effect.click();
+    Elements.$repeatEffect.click();
   });
   Elements.$repetitions.blur(function () {
     if (Elements.$repetitions.val() === '') {
@@ -214,28 +214,28 @@ $(function () {
     $(this).numbersOnly();
   });
 
-  Elements.$find_text.focus(function () {
+  Elements.$findText.focus(function () {
     if (View.effect !== 'replace') {
       View.toEffect('find');
-      Elements.$replace_effect.click();
+      Elements.$replaceEffect.click();
     }
   });
-  Elements.$replace_text.focus(function () {
+  Elements.$replaceText.focus(function () {
     View.toEffect('replace');
-    Elements.$replace_effect.click();
+    Elements.$replaceEffect.click();
   });
-  Elements.$list_effect.focus(function () {
-    Elements.$list_start.selectAll();
+  Elements.$listEffect.focus(function () {
+    Elements.$listStart.selectAll();
   });
-  Elements.$list_start.focus(function () {
+  Elements.$listStart.focus(function () {
     View.toEffect('list');
-    Elements.$list_start.selectAll();
-    Elements.$list_effect.click();
+    Elements.$listStart.selectAll();
+    Elements.$listEffect.click();
   });
-  Elements.$remove_list_effect.focus(function () {
+  Elements.$removeListEffect.focus(function () {
     Elements.$cutoff.selectAll();
   });
-  Elements.$repeat_effect.focus(function () {
+  Elements.$repeatEffect.focus(function () {
     Elements.$repetitions.selectAll();
   });
 });

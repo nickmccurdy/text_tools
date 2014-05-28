@@ -1,5 +1,6 @@
 {
   "browser": true,
+  "camelcase": true,
   "globalstrict": true,
   "jquery": true,
   "quotmark": "single",

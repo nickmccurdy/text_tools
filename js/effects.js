@@ -41,32 +41,32 @@ var Effects = {
 
   // Finds a String or RegExp within the input and capitalizes it.
   find: function (input) {
-    return input.replace(View.getQuery(), Elements.$find_text.val().toUpperCase());
+    return input.replace(View.getQuery(), Elements.$findText.val().toUpperCase());
   },
 
   // Finds a String or RegExp within the input and replaces it with another
   // String.
   replace: function (input) {
-    return input.replace(View.getQuery(), Elements.$replace_text.val());
+    return input.replace(View.getQuery(), Elements.$replaceText.val());
   },
 
   // Adds ordered or unordered list text to the beginning of every line of input
   // text.
   list: function (input) {
-    var start_text = Elements.$list_start.val();
+    var startText = Elements.$listStart.val();
 
     return Helpers.modifyAsList(input, function (list) {
       var newList;
 
-      if (Elements.$number_list.attr('checked')) {
+      if (Elements.$numberList.attr('checked')) {
         // ordered list
         newList = list.map(function (line, index) {
-          return (index + 1).toString() + start_text + line;
+          return (index + 1).toString() + startText + line;
         });
       } else {
         // unordered list
         newList = list.map(function (line) {
-          return start_text + line;
+          return startText + line;
         });
       }
 
@@ -77,11 +77,11 @@ var Effects = {
   // Removes a given number of characters from the beginning of every line.
   // Useful for removing plain text lists.
   remove_list: function (input) {
-    var text_array = _s.lines(input);
-    text_array.forEach(function (value, i) {
-      text_array[i] = value.substring(Elements.$cutoff.val());
+    var textArray = _s.lines(input);
+    textArray.forEach(function (value, i) {
+      textArray[i] = value.substring(Elements.$cutoff.val());
     });
-    return text_array.join('\n');
+    return textArray.join('\n');
   },
 
   // Repeats the input String a given number of times.
@@ -102,30 +102,30 @@ var Effects = {
 
   // Sorts input lines alphabetically.
   sortaz: function (input) {
-    return Helpers.modifyAsList(input, function (input_array) {
-      return input_array.sort();
+    return Helpers.modifyAsList(input, function (inputArray) {
+      return inputArray.sort();
     });
   },
 
   // Sorts input lines in reverse alphabetical order.
   sortza: function (input) {
-    return Helpers.modifyAsList(input, function (input_array) {
-      return input_array.sort().reverse();
+    return Helpers.modifyAsList(input, function (inputArray) {
+      return inputArray.sort().reverse();
     });
   },
 
   // Sorts input lines in reverse order.
   sortreverse: function (input) {
-    return Helpers.modifyAsList(input, function (input_array) {
-      return input_array.reverse();
+    return Helpers.modifyAsList(input, function (inputArray) {
+      return inputArray.reverse();
     });
   },
 
   // Sorts input lines randomly. Every time the output is updated, a different
   // random ordering is used.
   sortrandom: function (input) {
-    return Helpers.modifyAsList(input, function (input_array) {
-      return input_array.sort(function () {
+    return Helpers.modifyAsList(input, function (inputArray) {
+      return inputArray.sort(function () {
         return 0.5 - Math.random();
       });
     });

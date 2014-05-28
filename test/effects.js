@@ -4,9 +4,9 @@ describe('Effects', function () {
   var shortInput = 'Hello world';
 
   sinon.stub(Elements.$cutoff, 'val').returns(2);
-  sinon.stub(Elements.$find_text, 'val').returns('two');
+  sinon.stub(Elements.$findText, 'val').returns('two');
   sinon.stub(Elements.$repetitions, 'text').returns('5');
-  sinon.stub(Elements.$replace_text, 'val').returns('to');
+  sinon.stub(Elements.$replaceText, 'val').returns('to');
   sinon.stub(View, 'getQuery').returns('two');
 
   describe('.normal', function () {
@@ -74,25 +74,25 @@ describe('Effects', function () {
   describe('.list', function () {
     context('without numbering', function () {
       it('turns input lines into an unordered list', function () {
-        sinon.stub(Elements.$list_start, 'val').returns('- ');
-        sinon.stub(Elements.$number_list, 'attr').withArgs('checked').returns(false);
+        sinon.stub(Elements.$listStart, 'val').returns('- ');
+        sinon.stub(Elements.$numberList, 'attr').withArgs('checked').returns(false);
 
         expect(Effects.list('one\ntwo\nthree')).to.be('- one\n- two\n- three');
 
-        Elements.$list_start.val.restore();
-        Elements.$number_list.attr.restore();
+        Elements.$listStart.val.restore();
+        Elements.$numberList.attr.restore();
       });
     });
 
     context('with numbering', function () {
       it('turns input lines into an ordered list', function () {
-        sinon.stub(Elements.$list_start, 'val').returns('. ');
-        sinon.stub(Elements.$number_list, 'attr').withArgs('checked').returns(true);
+        sinon.stub(Elements.$listStart, 'val').returns('. ');
+        sinon.stub(Elements.$numberList, 'attr').withArgs('checked').returns(true);
 
         expect(Effects.list('one\ntwo\nthree')).to.be('1. one\n2. two\n3. three');
 
-        Elements.$list_start.val.restore();
-        Elements.$number_list.attr.restore();
+        Elements.$listStart.val.restore();
+        Elements.$numberList.attr.restore();
       });
     });
   });
