@@ -9,15 +9,6 @@ var View = {
     panel: []
   },
 
-  watched: {
-    input: undefined,
-    find: undefined,
-    replace: undefined,
-    list_start: undefined,
-    repetitions: undefined,
-    cutoff: undefined
-  },
-
   outputToInput: function () {
     Elements.$text_before.val(Elements.$text_after.val());
     return View;
@@ -59,38 +50,27 @@ var View = {
     return query;
   },
 
-  convert: function (variable, element) {
-    if (variable !== element) {
-      variable = element;
+  convert: function () {
+    var input = Elements.$text_before.val(),
+      output = Effects[View.effect](input),
+      allow_auto_select = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
 
-      var input = Elements.$text_before.val(),
-        output = Effects[View.effect](input),
-        allow_auto_select = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
-
-      if (Elements.$find_text.val() !== '') {
-        Elements.$counts_find.html(' (' + input.split(View.getQuery()).length - 1 + ')');
-      } else {
-        Elements.$counts_find.html('');
-      }
-
-      Elements.$text_after.val(output);
-
-      //output autoselect exclusion
-      if (View.last.focused === Elements.$text_after && !allow_auto_select) {
-        Elements.$text_after.selectAll();
-      }
-
-      //console.log(watcherName+'watcher activated');
+    if (Elements.$find_text.val() !== '') {
+      Elements.$counts_find.html(' (' + input.split(View.getQuery()).length - 1 + ')');
+    } else {
+      Elements.$counts_find.html('');
     }
+
+    Elements.$text_after.val(output);
+
+    //output autoselect exclusion
+    if (View.last.focused === Elements.$text_after && !allow_auto_select) {
+      Elements.$text_after.selectAll();
+    }
+
+    //console.log(watcherName+'watcher activated');
+
     return View;
-  },
-
-  convertAll: function () { //input watcher
-    if (View.watched.input !== Elements.$text_before) {
-      View.convert();
-      //console.log('main watcher activated');
-    }
-    View.convert(View.watched.find, Elements.$find_text, 'find').convert(View.watched.replace, Elements.$replace_text, 'replace').convert(View.watched.list_start, Elements.$list_start, 'list_start').convert(View.watched.repetitions, Elements.$repetitions, 'repetitions').convert(View.watched.cutoff, Elements.$cutoff, 'cutoff'); //buggy
   }
 
 };
@@ -102,10 +82,10 @@ $(function () {
   Elements.$normal_effect.click();
   Panels.init();
   Elements.$text_before.focus();
-  View.convertAll();
+  View.convert();
 
   //start daemon scripts
-  Elements.$body.bind('change keydown keyup paste cut', View.convertAll);
+  Elements.$body.bind('change keydown keyup paste cut', View.convert);
   Elements.$a.focus(View.regainFocus());
   Elements.$text_before.focus(View.updateFocus(Elements.$text_before));
   Elements.$text_after.focus(View.updateFocus(Elements.$text_after));
@@ -120,7 +100,7 @@ $(function () {
     View.toEffect(new_effect);
     Elements.$effects.removeClass('active');
     $(this).addClass('active');
-    View.convertAll();
+    View.convert();
   });
 
   //panel toggling
@@ -151,7 +131,7 @@ $(function () {
   Elements.$clear.focus(Elements.$text_before.focus);
   Elements.$find_effect.click(Elements.$find_text.focus);
   Elements.$replace_effect.click(Elements.$replace_text.focus);
-  Elements.$regexp_toggle.click(View.convertAll);
+  Elements.$regexp_toggle.click(View.convert);
   Elements.$regexp_toggle.focus(function () {
     if (View.effect !== 'replace') {
       View.toEffect('find');
@@ -159,7 +139,7 @@ $(function () {
     }
   });
   Elements.$regexp_toggle_label.click(function () {
-    View.convertAll();
+    View.convert();
     Elements.$regexp_toggle.toggleCheck();
   });
   Elements.$regexp_toggle_label.focus(function () {
@@ -169,7 +149,7 @@ $(function () {
     Elements.$find_effect.click();
   });
   Elements.$number_list.click(function () {
-    View.convertAll();
+    View.convert();
     Elements.$list_start.selectAll();
   });
   Elements.$number_list.focus(function () {
@@ -181,7 +161,7 @@ $(function () {
     View.toEffect('list');
     Elements.$list_start.selectAll();
     Elements.$list_effect.click();
-    View.convertAll();
+    View.convert();
   });
   Elements.$cutoff.focus(function () {
     View.toEffect('remove_list');
