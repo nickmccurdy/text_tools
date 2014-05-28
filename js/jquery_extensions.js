@@ -16,6 +16,7 @@ $.fn.extend({
   // Decreases the numerical value of an element by one.
   valueDown: function () {
     this.val(parseInt(this.val(), 10) - 1);
+    // Reset the value to 0 if it is below 0.
     if (parseInt(this.val(), 10) < 0) {
       this.val('0');
     }

@@ -59,10 +59,12 @@ var Effects = {
       var newList;
 
       if (Elements.$number_list.attr('checked')) {
+        // ordered list
         newList = list.map(function (line, index) {
           return (index + 1).toString() + start_text + line;
         });
       } else {
+        // unordered list
         newList = list.map(function (line) {
           return start_text + line;
         });

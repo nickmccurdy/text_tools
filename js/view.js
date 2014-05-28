@@ -64,6 +64,7 @@ var View = {
   getQuery: function () {
     var query = Elements.$find_text.val();
     if (Elements.$regexp_toggle.attr('checked', true)) {
+      // Replace the String with a RegExp to make it case-insensitive.
       query = new RegExp(query, 'gi');
     }
     return query;
@@ -76,15 +77,17 @@ var View = {
       output = Effects[View.effect](input),
       allow_auto_select = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
 
+    // Update the counter for the Find effect.
     if (Elements.$find_text.val() !== '') {
       Elements.$counts_find.html(' (' + input.split(View.getQuery()).length - 1 + ')');
     } else {
       Elements.$counts_find.html('');
     }
 
+    // Update the output field.
     Elements.$text_after.val(output);
 
-    //output autoselect exclusion
+    // Output autoselect exclusion.
     if (View.last.focused === Elements.$text_after && !allow_auto_select) {
       Elements.$text_after.selectAll();
     }
@@ -98,14 +101,14 @@ var View = {
 
 // Startup scripts for Text Tools, mostly involving event binding.
 $(function () {
-  //initialization
+  // Initialization
   View.updateFocus(Elements.$text_before);
   Elements.$normal_effect.click();
   Panels.init();
   Elements.$text_before.focus();
   View.convert();
 
-  //start daemon scripts
+  // Start daemon scripts
   Elements.$body.bind('change keydown keyup paste cut', View.convert);
   Elements.$a.focus(View.regainFocus());
   Elements.$text_before.focus(View.updateFocus(Elements.$text_before));
@@ -115,7 +118,7 @@ $(function () {
   });
   Elements.$imgs_without_alts.attr('alt', '');
 
-  //effect switching
+  // Effect switching
   Elements.$effects.click(function () {
     var new_effect = $(this).attr('data-effect');
     View.toEffect(new_effect);
@@ -124,7 +127,7 @@ $(function () {
     View.convert();
   });
 
-  //panel toggling
+  // Panel toggling
   Elements.$panel_heading.click(function () {
     var to_toggle = $(this).attr('data-toggle'),
       right_object = $(this).find('.toggle-icon');
@@ -134,7 +137,7 @@ $(function () {
     Panels.getHidden();
   });
 
-  //toolbar
+  // Toolbar
   Elements.$toolbar_collapse_button.click(function () {
     Panels.toggle(false);
   });
@@ -146,7 +149,7 @@ $(function () {
     Panels.getHidden();
   });
 
-  //more click events
+  // More click events
   Elements.$outputToInput.click(View.outputToInput);
   Elements.$clear.click(View.clear);
   Elements.$clear.focus(Elements.$text_before.focus);
