@@ -3,6 +3,7 @@
   "globalstrict": true,
   "jquery": true,
   "quotmark": "single",
+
   "globals": {
     "Effects": true,
     "Elements": true,

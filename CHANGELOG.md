@@ -1,7 +1,7 @@
 #Changelog
 
 ##2.0
-- extremely awesome new dark, minimalistic theme :3
+- new minimal theme
 - improved collapsing interface
 - buttons are easier to click (block display)
 - various fixes and improvements
