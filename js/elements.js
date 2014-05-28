@@ -21,7 +21,7 @@ var Elements = {
   $panelHeading: $('.panel-heading'),
   $regexpToggle: $('#regexp_toggle'),
   $regexpToggleLabel: $('#regexp_toggle_label'),
-  $removeListEffect: $('.effect[data-effect="remove_list"]'),
+  $removeListEffect: $('.effect[data-effect="removeList"]'),
   $repeatEffect: $('.effect[data-effect="repeat"]'),
   $repetitions: $('#repetitions'),
   $replaceEffect: $('.effect#replace'),

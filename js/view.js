@@ -75,7 +75,7 @@ var View = {
   convert: function () {
     var input = Elements.$textBefore.val(),
       output = Effects[View.effect](input),
-      allowAutoSelect = ['find', 'replace', 'list', 'remove_list', 'repeat'].indexOf(View.effect) === -1;
+      allowAutoSelect = ['find', 'replace', 'list', 'removeList', 'repeat'].indexOf(View.effect) === -1;
 
     // Update the counter for the Find effect.
     if (Elements.$findText.val() !== '') {
@@ -188,7 +188,7 @@ $(function () {
     View.convert();
   });
   Elements.$cutoff.focus(function () {
-    View.toEffect('remove_list');
+    View.toEffect('removeList');
     Elements.$cutoff.selectAll();
     Elements.$removeListEffect.click();
   });

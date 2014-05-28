@@ -76,7 +76,7 @@ var Effects = {
 
   // Removes a given number of characters from the beginning of every line.
   // Useful for removing plain text lists.
-  remove_list: function (input) {
+  removeList: function (input) {
     var textArray = _s.lines(input);
     textArray.forEach(function (value, i) {
       textArray[i] = value.substring(Elements.$cutoff.val());

@@ -24,7 +24,7 @@
         "sortrandom": "Sorts a list in a random order. Click again to reorder the list.",
 
         "list": "Turns the input into a list.",
-        "remove_list": "Removes characters at the beginning of items in a list.",
+        "removeList": "Removes characters at the beginning of items in a list.",
 
         "repeat": "Enter a number to repeat all the text that many times.",
         "wordcount": "Counts the number of characters, words, and liens int he text.",

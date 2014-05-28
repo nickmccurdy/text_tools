@@ -97,9 +97,9 @@ describe('Effects', function () {
     });
   });
 
-  describe('.remove_list', function () {
+  describe('.removeList', function () {
     it('removes the first two characters from every line of the input', function () {
-      expect(Effects.remove_list('- one\n- two\n- three')).to.be('one\ntwo\nthree');
+      expect(Effects.removeList('- one\n- two\n- three')).to.be('one\ntwo\nthree');
     });
   });
 
