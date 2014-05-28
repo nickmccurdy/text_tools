@@ -1,8 +1,3 @@
-# What is Text Tools?
-Text Tools is a free tool for text manipulation.
-
-It can change the case of text, find and replace text, count words, and do tons of other stuff.
-
 # What is the goal of Text Tools?
 Text Tools is designed to be fast, easy to use, and powerful.
 
