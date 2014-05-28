@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-docco');
 
   grunt.initConfig({
     jshint: {
@@ -9,6 +10,9 @@ module.exports = function (grunt) {
     },
     csslint: {
       files: '*.css'
+    },
+    docco: {
+      files: 'js/*.js'
     }
   });
 
