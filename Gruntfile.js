@@ -6,6 +6,10 @@ module.exports = function (grunt) {
     jshint: {
       files: ['js/*.js', 'test/*.js', '!test/mocha.js'],
       options: {
+        browser: true,
+        globalstrict: true,
+        jquery: true,
+        quotmark: 'single',
         globals: {
           Effects: true,
           Elements: true,
@@ -29,11 +33,7 @@ module.exports = function (grunt) {
           // other test libraries
           expect: false,
           sinon: false
-        },
-        browser: true,
-        globalstrict: true,
-        jquery: true,
-        quotmark: 'single'
+        }
       }
     },
     csslint: {
