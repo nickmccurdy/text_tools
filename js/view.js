@@ -1,25 +1,37 @@
 'use strict';
 
+// A collection of the main view helpers for Text Tools. This also stores some
+// information about the current state of the view.
 var View = {
 
-  effect: 'normal', //change this to a different effect to bug test it on startup
+  // The ID of the currently enabled effect. This should match the name of a
+  // function in Effects. Change this to a different effect to bug test it on
+  // startup.
+  effect: 'normal',
 
+  // Information about recently used elements. Used primarily for refocusing UI
+  // elements after effect settings are changed.
   last: {
     focused: [],
     panel: []
   },
 
+  // Replaces the value of the input with the value of the output. This is
+  // useful for "saving" effects so that multiple can be chained together.
+  // Chainable.
   outputToInput: function () {
     Elements.$text_before.val(Elements.$text_after.val());
     return View;
   },
 
+  // Changes the a given effect (by ID) and updates the output. Chainable.
   toEffect: function (change) {
     View.effect = change;
     View.convert();
     return View;
   },
 
+  // Resets all input fields to the default values. Chainable.
   clear: function () {
     Elements.$text_before.val('');
     Elements.$text_after.val('');
@@ -32,16 +44,23 @@ var View = {
     return View;
   },
 
+  // A hack that saves information that the given element is now focused.
+  // Chainable.
   updateFocus: function (newFocus) {
     View.last.focused = newFocus;
     return View;
   },
 
+  // Focuses on the last focused element that is also whitelisted to regain the
+  // focus. Chainable.
   regainFocus: function () {
     View.last.focused.focus();
     return View;
   },
 
+  // Returns the search query for the "Find" or "Find and Replace" effects. If a
+  // RegExp is given by the user, that is used. Otherwise, the String input is
+  // converted to a case-insensitive RegExp.
   getQuery: function () {
     var query = Elements.$find_text.val();
     if (Elements.$regexp_toggle.attr('checked', true)) {
@@ -50,6 +69,8 @@ var View = {
     return query;
   },
 
+  // Triggers a conversion of the current input to a new output, based on the
+  // current effect and options. Chainable.
   convert: function () {
     var input = Elements.$text_before.val(),
       output = Effects[View.effect](input),
@@ -75,7 +96,7 @@ var View = {
 
 };
 
-//USER INTERFACE
+// Startup scripts for Text Tools, mostly involving event binding.
 $(function () {
   //initialization
   View.updateFocus(Elements.$text_before);

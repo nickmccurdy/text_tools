@@ -1,5 +1,6 @@
 'use strict';
 
+// Cached jQuery objects for use by various modules.
 var Elements = {
   $a: $('a'),
   $body: $('body'),
